@@ -1,0 +1,27 @@
+@import "./blog.scss";
+
+.form-control {
+  @apply flex flex-col my-4;
+}
+
+.btn-primary {
+  @apply bg-gray-700 rounded-lg text-white py-1 px-4 my-2 shadow-md;
+}
+
+.btn-primary:hover {
+  @apply bg-gray-600;
+}
+
+@screen md {
+  .btn-primary {
+    @apply self-start;
+  }
+}
+
+.form-input {
+  @apply text-black rounded-lg shadow-md p-1 my-1 outline-none;
+}
+
+.form-input:focus {
+  @apply shadow-outline;
+}

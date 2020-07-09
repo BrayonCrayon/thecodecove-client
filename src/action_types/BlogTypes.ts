@@ -22,10 +22,33 @@ export interface IFetchPostsFailure extends IBaseState {
     error: Object,
 }
 
+/**
+ * Set Posts Search Term
+ */
+export const SET_POSTS_SEARCH_TERM_PENDING = "SET_POSTS_SEARCH_TERM_PENDING";
+export const SET_POSTS_SEARCH_TERM_SUCCESS = "SET_POSTS_SEARCH_TERM_SUCCESS";
+export const SET_POSTS_SEARCH_TERM_FAILURE = "SET_POSTS_SEARCH_TERM_FAILURE";
+
+export interface ISetPostsSearchTermPending extends IBaseState {
+    type: typeof SET_POSTS_SEARCH_TERM_PENDING
+}
+
+export interface ISetPostsSearchTermSuccess extends IBaseState {
+    type: typeof SET_POSTS_SEARCH_TERM_SUCCESS,
+    searchTerm: string,
+}
+
+export interface ISetPostsSearchTermFailure extends IBaseState {
+    type: typeof SET_POSTS_SEARCH_TERM_FAILURE
+}
+
 /*
  * Export Blog Types
  */
 export type BlogTypes =
     IFetchPostsPending |
     IFetchPostsSuccess |
-    IFetchPostsFailure;
+    IFetchPostsFailure |
+    ISetPostsSearchTermPending |
+    ISetPostsSearchTermSuccess |
+    ISetPostsSearchTermFailure;

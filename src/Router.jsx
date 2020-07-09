@@ -9,10 +9,9 @@ import Blog            from "./views/Blog/Blog";
 
 const Router = () => (
     <Switch>
-        {/*User might LogIn*/}
-        <Route exact path='/' component={Blog}/>  {/*User will LogIn*/}
+        <Route exact path='/' component={Blog}/>
         <Route path='/login' component={Login}/>
-        <Route path='/register' component={Register}/>  {/* User is LoggedIn*/}
+        <Route path='/register' component={Register}/>
         <Route path='/blog' component={Blog}/>
         {/*<PrivateRoute path='/dashboard' component={Dashboard}/>  /!*Page Not Found*!/*/}
         {/*<Route component={NotFound}/>*/}

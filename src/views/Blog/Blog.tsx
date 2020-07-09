@@ -7,10 +7,11 @@ import {Post} from "../../dtos/Post";
 
 export interface BlogProps {
     posts: Array<Post>,
+    searchTerm: string
 }
 
 
-const Blog = ({posts = []} : BlogProps) => {
+const Blog = ({posts = [], searchTerm} : BlogProps) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const Blog = ({posts = []} : BlogProps) => {
     return (
       <div className="grid grid-cols-1 gap-6 p-4 overflow-auto h-full md:grid-cols-2 lg:grid-cols-4">
           {
-              posts.map((post) =>
+              posts.filter((post) => post.name.includes(searchTerm)).map((post) =>
                   (
                       <div key={post.id} className="grid shadow-md rounded-lg p-4 border border-gray-300 md:col-start-1 md:col-end-2 lg:col-start-2 lg:col-end-4">
                           <div className="post-header flex justify-between">
@@ -45,6 +46,7 @@ const Blog = ({posts = []} : BlogProps) => {
 export function mapStateToProps(state: IStoreState) {
     return {
         posts: state.blogState.posts,
+        searchTerm: state.blogState.searchTerm,
     }
 }
 

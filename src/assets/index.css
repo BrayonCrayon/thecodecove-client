@@ -12274,10 +12274,6 @@ video {
   grid-template-columns: none;
 }
 
-.grid-cols-blog {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
 .col-auto {
   grid-column: auto;
 }
@@ -26084,10 +26080,6 @@ video {
     grid-template-columns: none;
   }
 
-  .sm\:grid-cols-blog {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .sm\:col-auto {
     grid-column: auto;
   }
@@ -39825,10 +39817,6 @@ video {
 
   .md\:grid-cols-none {
     grid-template-columns: none;
-  }
-
-  .md\:grid-cols-blog {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .md\:col-auto {
@@ -53570,10 +53558,6 @@ video {
     grid-template-columns: none;
   }
 
-  .lg\:grid-cols-blog {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .lg\:col-auto {
     grid-column: auto;
   }
@@ -67311,10 +67295,6 @@ video {
 
   .xl\:grid-cols-none {
     grid-template-columns: none;
-  }
-
-  .xl\:grid-cols-blog {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .xl\:col-auto {

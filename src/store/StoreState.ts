@@ -11,11 +11,13 @@ export interface IBaseState {
 }
 
 export interface IAuthState extends IBaseState {
-    user: User;
+    user?: User;
+    loggedIn: Boolean,
 }
 
 export interface IBlogState extends IBaseState {
     posts: Array<Post>,
+    searchTerm: string,
 }
 
 export interface IStoreState {

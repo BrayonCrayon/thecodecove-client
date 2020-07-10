@@ -74,6 +74,12 @@ const NavMenu = ({loggedIn} : NavMenuProps) => {
                         <Link to="/about-me" className="hover:no-underline text-black hover:text-gray-600">About Me</Link>
                     </div>
                     {
+                        loggedIn &&
+                        <div className="self-center text-center px-2">
+                            <Link className="hover:no-underline text-black hover:text-gray-600" to="/dashboard" >Dashboard</Link>
+                        </div>
+                    }
+                    {
                         showLoginLogout()
                     }
                 </div>

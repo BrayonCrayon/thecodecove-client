@@ -2,7 +2,10 @@ import * as React      from 'react';
 import {Route, Switch} from 'react-router-dom';
 import Login           from './views/auth/Login';
 import Register        from './views/auth/Register';
-import Blog            from "./views/Blog/Blog";
+import Blog            from './views/Blog/Blog';
+import ViewPost            from './views/Blog/Posts/ViewPost';
+import Dashboard       from './views/Dashboard/Index';
+import Create          from "./views/Blog/Posts/Create";
 // import NotFound from './views/NotFound/NotFound'// User is LoggedIn
 // import PrivateRoute from './PrivateRoute'
 // import Dashboard from './views/user/Dashboard/Dashboard';
@@ -13,7 +16,9 @@ const Router = () => (
         <Route path='/login' component={Login}/>
         <Route path='/register' component={Register}/>
         <Route path='/blog' component={Blog}/>
-        {/*<PrivateRoute path='/dashboard' component={Dashboard}/>  /!*Page Not Found*!/*/}
+        <Route exact path='/post/view/:id' component={ViewPost}/>
+        <Route exact path='/post/create' component={Create}/>
+        <Route exact path='/dashboard' component={Dashboard}/>  {/*Page Not Found*/}
         {/*<Route component={NotFound}/>*/}
     </Switch>
 );

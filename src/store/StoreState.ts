@@ -17,6 +17,7 @@ export interface IAuthState extends IBaseState {
 
 export interface IBlogState extends IBaseState {
     posts: Array<Post>,
+    post: Post,
     searchTerm: string,
 }
 
@@ -31,3 +32,16 @@ export type AppThunkType<ReturnType = void> = ThunkAction<
     unknown,
     Action<string>
     >;
+
+export function getInitialPostObj() : Post
+{
+    return {
+        content: '',
+        created_at: new Date(),
+        id: -1,
+        name: '',
+        updated_at: new Date(),
+        user: undefined,
+        user_id: -1,
+    }
+}

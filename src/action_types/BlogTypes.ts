@@ -42,6 +42,66 @@ export interface ISetPostsSearchTermFailure extends IBaseState {
     type: typeof SET_POSTS_SEARCH_TERM_FAILURE
 }
 
+/**
+ * Set Post
+ */
+export const SET_POST = "SET_POST";
+
+export interface ISetPost extends IBaseState {
+    type: typeof SET_POST,
+    post: Post,
+}
+
+/**
+ * Set Post By ID
+ */
+export const SET_POST_BY_ID = "SET_POST_BY_ID";
+
+export interface ISetPostById extends IBaseState {
+    type: typeof SET_POST_BY_ID,
+    postId: number,
+}
+
+/**
+ * Fetch Post
+ */
+export const FETCH_POST_PENDING = "FETCH_POST_PENDING";
+export const FETCH_POST_SUCCESS = "FETCH_POST_SUCCESS";
+export const FETCH_POST_FAILURE = "FETCH_POST_FAILURE";
+
+export interface IFetchPostPending extends IBaseState {
+    type: typeof FETCH_POST_PENDING,
+}
+
+export interface IFetchPostSuccess extends IBaseState {
+    type: typeof FETCH_POST_SUCCESS,
+    post: Post,
+}
+
+export interface IFetchPostFailure extends IBaseState {
+    type: typeof FETCH_POST_FAILURE,
+}
+
+/**
+ * Create Post
+ */
+export const CREATE_POST_PENDING = "CREATE_POST_PENDING";
+export const CREATE_POST_SUCCESS = "CREATE_POST_SUCCESS";
+export const CREATE_POST_FAILURE = "CREATE_POST_FAILURE";
+
+export interface ICreatePostPending extends IBaseState {
+    type: typeof CREATE_POST_PENDING,
+}
+
+export interface ICreatePostSuccess extends IBaseState {
+    type: typeof CREATE_POST_SUCCESS,
+    post: Post,
+}
+
+export interface ICreatePostFailure extends IBaseState {
+    type: typeof CREATE_POST_FAILURE,
+}
+
 /*
  * Export Blog Types
  */
@@ -51,4 +111,12 @@ export type BlogTypes =
     IFetchPostsFailure |
     ISetPostsSearchTermPending |
     ISetPostsSearchTermSuccess |
-    ISetPostsSearchTermFailure;
+    ISetPostsSearchTermFailure |
+    ISetPost |
+    ISetPostById |
+    IFetchPostPending |
+    IFetchPostSuccess |
+    IFetchPostFailure |
+    ICreatePostPending |
+    ICreatePostSuccess |
+    ICreatePostFailure;

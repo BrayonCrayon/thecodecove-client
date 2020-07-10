@@ -3,14 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="a1aeafd3-9253-4d06-be70-38fef6c8bbd7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/action_types/AuthTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/action_types/AuthTypes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/AuthActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/AuthActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/AuthReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/AuthReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Create.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +70,8 @@
       <workItem from="1593718324598" duration="12692000" />
       <workItem from="1594299534459" duration="155000" />
       <workItem from="1594299910622" duration="6000" />
-      <workItem from="1594299932698" duration="6961000" />
+      <workItem from="1594299932698" duration="16093000" />
+      <workItem from="1594377128875" duration="13405000" />
     </task>
     <servers />
   </component>
@@ -73,6 +79,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="-1209" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594381657819">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1209" y="310" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1594381657819" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1594307949077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -81,5 +91,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="224" y="197" width="1644" height="1022" key="dock-window-1/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594312796895" />
+    <state x="-1304" y="240" key="run.anything.popup" timestamp="1594326434178">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1304" y="240" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1594326434178" />
   </component>
 </project>

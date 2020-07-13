@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1aeafd3-9253-4d06-be70-38fef6c8bbd7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Edit.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Router.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/BlogActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/BlogActions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Blog/Blog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Blog.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Create.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Tile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Tile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/ViewPost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/View.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +79,8 @@
       <workItem from="1594299534459" duration="155000" />
       <workItem from="1594299910622" duration="6000" />
       <workItem from="1594299932698" duration="16093000" />
-      <workItem from="1594377128875" duration="13405000" />
+      <workItem from="1594377128875" duration="13406000" />
+      <workItem from="1594645991233" duration="9013000" />
     </task>
     <servers />
   </component>
@@ -79,10 +88,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1209" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594381657819">
+    <state x="-1209" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594651589681">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1209" y="310" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1594381657819" />
+    <state x="-1209" y="310" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1594651589681" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1594307949077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

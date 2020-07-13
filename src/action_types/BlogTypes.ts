@@ -102,6 +102,25 @@ export interface ICreatePostFailure extends IBaseState {
     type: typeof CREATE_POST_FAILURE,
 }
 
+/**
+ * Update Post
+ */
+export const UPDATE_POST_PENDING = "UPDATE_POST_PENDING";
+export const UPDATE_POST_SUCCESS = "UPDATE_POST_SUCCESS";
+export const UPDATE_POST_FAILURE = "UPDATE_POST_FAILURE";
+
+export interface IUpdatePostPending extends IBaseState {
+    type: typeof UPDATE_POST_PENDING,
+}
+
+export interface IUpdatePostSuccess extends IBaseState {
+    type: typeof UPDATE_POST_SUCCESS,
+}
+
+export interface IUpdatePostFailure extends IBaseState {
+    type: typeof UPDATE_POST_FAILURE,
+}
+
 /*
  * Export Blog Types
  */
@@ -119,4 +138,7 @@ export type BlogTypes =
     IFetchPostFailure |
     ICreatePostPending |
     ICreatePostSuccess |
-    ICreatePostFailure;
+    ICreatePostFailure |
+    IUpdatePostPending |
+    IUpdatePostSuccess |
+    IUpdatePostFailure;

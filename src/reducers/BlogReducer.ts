@@ -57,6 +57,13 @@ export function blogReducer(state = initialState, action: BlogActionTypes.BlogTy
                 ...state,
                 ...action,
             }
+        case BlogActionTypes.UPDATE_POST_PENDING:
+        case BlogActionTypes.UPDATE_POST_SUCCESS:
+        case BlogActionTypes.UPDATE_POST_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
         default:
             return state
     }

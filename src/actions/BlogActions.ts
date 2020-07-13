@@ -1,5 +1,5 @@
 import {AppThunkType} from "../store/StoreState";
-import {apiAxios} from "../store/Store";
+import {apiAxios, store} from "../store/Store";
 import {
     CREATE_POST_FAILURE,
     CREATE_POST_PENDING,
@@ -24,11 +24,17 @@ import {
     ISetPostsSearchTermFailure,
     ISetPostsSearchTermPending,
     ISetPostsSearchTermSuccess,
+    IUpdatePostFailure,
+    IUpdatePostPending,
+    IUpdatePostSuccess,
     SET_POST,
     SET_POST_BY_ID,
     SET_POSTS_SEARCH_TERM_FAILURE,
     SET_POSTS_SEARCH_TERM_PENDING,
-    SET_POSTS_SEARCH_TERM_SUCCESS
+    SET_POSTS_SEARCH_TERM_SUCCESS,
+    UPDATE_POST_FAILURE,
+    UPDATE_POST_PENDING,
+    UPDATE_POST_SUCCESS
 } from "../action_types/BlogTypes";
 import {Post} from "../dtos/Post";
 
@@ -229,6 +235,53 @@ export const createPost = (payload: ICreatePostPayload): AppThunkType => {
             dispatch(createPostSuccess(data));
         } catch (error) {
             dispatch(createPostFailure(error));
+        }
+    }
+}
+
+/**
+ * Update Post
+ */
+export function updatePostPending() : IUpdatePostPending {
+    return {
+        type: UPDATE_POST_PENDING,
+        pending: true,
+        error: {},
+    }
+}
+
+export function updatePostSuccess() : IUpdatePostSuccess {
+    return {
+        type: UPDATE_POST_SUCCESS,
+        pending: false,
+        error: {},
+    }
+}
+
+export function updatePostFailure(error: Object) : IUpdatePostFailure {
+    return {
+        type: UPDATE_POST_FAILURE,
+        pending: false,
+        error
+    }
+}
+
+interface UpdatePostPayload {
+    post: Post,
+}
+
+export const updatePost = (payload: UpdatePostPayload) : AppThunkType => {
+    return async dispatch => {
+        try {
+            updatePostPending();
+            await apiAxios.put(`api/posts/update/${payload.post.id}`, {
+                content: payload.post.content,
+                name: payload.post.name,
+            });
+            dispatch(updatePostSuccess());
+        }
+        catch(error) {
+            dispatch(updatePostFailure(error));
         }
     }
 }

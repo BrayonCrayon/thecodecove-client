@@ -8,11 +8,12 @@ import Tile from "./Posts/Tile";
 
 export interface BlogProps {
     posts: Array<Post>,
-    searchTerm: string
+    searchTerm: string,
+    authed: Boolean,
 }
 
 
-const Blog = ({posts = [], searchTerm}: BlogProps) => {
+const Blog = ({posts = [], searchTerm, authed = false}: BlogProps) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -25,7 +26,7 @@ const Blog = ({posts = [], searchTerm}: BlogProps) => {
                 posts.filter((post) => post.name.includes(searchTerm))
                     .map((post) =>
                         (
-                            <Tile post={post} key={post.id}/>
+                            <Tile post={post} key={post.id} canEdit={authed}/>
                         ))
             }
         </div>
@@ -36,6 +37,7 @@ export function mapStateToProps(state: IStoreState) {
     return {
         posts: state.blogState.posts,
         searchTerm: state.blogState.searchTerm,
+        authed: state.authState.loggedIn,
     }
 }
 

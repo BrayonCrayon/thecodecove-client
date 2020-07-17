@@ -1,5 +1,5 @@
 import {AppThunkType} from "../store/StoreState";
-import {apiAxios, store} from "../store/Store";
+import {apiAxios} from "../store/Store";
 import {
     CREATE_POST_FAILURE,
     CREATE_POST_PENDING,

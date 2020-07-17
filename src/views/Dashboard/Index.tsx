@@ -1,7 +1,7 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useEffect} from 'react';
 import {IStoreState} from "../../store/StoreState";
 import {connect, useDispatch} from "react-redux";
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {setLoggedIn} from "../../actions/AuthActions";
 
 interface IIndex {
@@ -23,7 +23,7 @@ const Index = ({isAuthenticated} : IIndex) => {
             }
             {
                 !isAuthenticated &&
-                <Link to="/dashboard" className="btn-primary col-start-2 col-end-3 text-center" >Login To View Dashboard</Link>
+                <Link to="/login" className="btn-primary col-start-2 col-end-3 text-center" >Login To View Dashboard</Link>
             }
         </div>
     )

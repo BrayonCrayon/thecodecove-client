@@ -32,7 +32,7 @@ const Create = ({userId} : ICreateProps) => {
             name,
         }));
         history.push("/blog");
-    }, [content, name, userId, dispatch]);
+    }, [dispatch, history, userId, content, name]);
 
     return (
         <div className="flex flex-col px-4 self-center md:w-3/4 lg:w-1/2">

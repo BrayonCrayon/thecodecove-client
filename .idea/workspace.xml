@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1aeafd3-9253-4d06-be70-38fef6c8bbd7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Edit.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Router.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/BlogActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/BlogActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Blog/Blog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Blog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Create.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Tile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Tile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/ViewPost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/View.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/components/SearchInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/components/SearchInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/layouts/NavMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layouts/NavMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +77,8 @@
       <workItem from="1594299910622" duration="6000" />
       <workItem from="1594299932698" duration="16093000" />
       <workItem from="1594377128875" duration="13406000" />
-      <workItem from="1594645991233" duration="9013000" />
+      <workItem from="1594645991233" duration="10275000" />
+      <workItem from="1594988083044" duration="2118000" />
     </task>
     <servers />
   </component>

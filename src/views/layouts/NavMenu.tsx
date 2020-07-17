@@ -7,17 +7,20 @@ import {connect, useDispatch} from "react-redux";
 import {logout, setLoggedIn} from "../../actions/AuthActions";
 import {IStoreState} from "../../store/StoreState";
 import {User} from "../../dtos/User";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {setPostsSearchTerm} from "../../actions/BlogActions";
+const _ = require('lodash');
 
 export interface NavMenuProps {
     user?: User,
     loggedIn: Boolean,
 }
 
-const NavMenu = ({loggedIn} : NavMenuProps) => {
+const NavMenu = ({loggedIn}: NavMenuProps) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [toggleMenu, setToggleMenu] = useState(false);
+    const [enterKey] = useState(13);
 
     useEffect(() => {
         dispatch(setLoggedIn());
@@ -31,9 +34,18 @@ const NavMenu = ({loggedIn} : NavMenuProps) => {
         return toggleMenu ? "flex " : "hidden";
     }, [toggleMenu]);
 
+    const navigateToBlog = useCallback((keyCode: number) => {
+        return keyCode === enterKey &&
+            !_.isEqual(history.location.pathname, '/') &&
+            !_.isEqual(history.location.pathname, '/blog');
+    }, [history, enterKey]);
+
     const searchCallback = useCallback((e: any) => {
         dispatch(setPostsSearchTerm(e.target.value));
-    }, [dispatch]);
+        if (navigateToBlog(e.keyCode)) {
+            history.push('/blog');
+        }
+    }, [dispatch, history, navigateToBlog]);
 
     const logoutCallback = useCallback(() => {
         dispatch(logout());
@@ -43,7 +55,7 @@ const NavMenu = ({loggedIn} : NavMenuProps) => {
         if (!loggedIn) {
             return (
                 <div className="self-center text-center px-2">
-                    <Link className="hover:no-underline text-black hover:text-gray-600" to="/login" >Login</Link>
+                    <Link className="hover:no-underline text-black hover:text-gray-600" to="/login">Login</Link>
                 </div>
             )
         }
@@ -61,22 +73,26 @@ const NavMenu = ({loggedIn} : NavMenuProps) => {
             <div className="w-full flex flex-wrap px-4 lg:w-1/2 lg:flex-row">
                 <div
                     className="animate__animated animate__bounce animate__delay-2s w-full flex justify-between lg:w-auto lg:justify-start">
-                    <Link to="/" className="text-2xl font-semibold hover:no-underline text-black hover:text-gray-500 lg:text-3xl" >The Code Cove</Link>
+                    <Link to="/"
+                          className="text-2xl font-semibold hover:no-underline text-black hover:text-gray-500 lg:text-3xl">The
+                        Code Cove</Link>
                     <FontAwesomeIcon icon={faBars} className="text-2xl self-center cursor-pointer lg:hidden"
                                      onClick={toggle}/>
                 </div>
                 <div
                     className={`${navLinkClass} w-full flex-col text-md border-b border-gray-500 lg:border-none lg:flex lg:text-lg lg:w-1/2 lg:flex-row lg:ml-4 `}>
                     <div className="self-center text-center px-2">
-                        <Link to="/blog" className="hover:no-underline text-black hover:text-gray-600" >Blog</Link>
+                        <Link to="/blog" className="hover:no-underline text-black hover:text-gray-600">Blog</Link>
                     </div>
                     <div className="self-center text-center px-2">
-                        <Link to="/about-me" className="hover:no-underline text-black hover:text-gray-600">About Me</Link>
+                        <Link to="/about-me" className="hover:no-underline text-black hover:text-gray-600">About
+                            Me</Link>
                     </div>
                     {
                         loggedIn &&
                         <div className="self-center text-center px-2">
-                            <Link className="hover:no-underline text-black hover:text-gray-600" to="/dashboard" >Dashboard</Link>
+                            <Link className="hover:no-underline text-black hover:text-gray-600"
+                                  to="/dashboard">Dashboard</Link>
                         </div>
                     }
                     {

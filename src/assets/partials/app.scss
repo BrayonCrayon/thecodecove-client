@@ -1,4 +1,9 @@
 @import "./blog.scss";
+@import "./about-me.scss";
+
+body {
+  @apply bg-gray-100;
+}
 
 .form-control {
   @apply flex flex-col my-4;

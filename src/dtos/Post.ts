@@ -5,7 +5,7 @@ export interface Post {
     name: string;
     content: string;
     user_id: number;
-    user: User;
+    user?: User;
     created_at: Date;
     updated_at: Date;
 }

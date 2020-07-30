@@ -5,7 +5,7 @@ import Router from "./Router";
 
 function App() {
   return (
-    <div className="h-screen flex flex-col bg-gray-100">
+    <div className="h-full flex flex-col bg-gray-100">
         <NavMenu />
         <Route component={Router} />
     </div>

@@ -3,6 +3,7 @@ import {Post} from "../dtos/Post";
 import {ThunkAction} from "redux-thunk";
 import {RootState} from "../reducers/RootReducer";
 import {Action} from "redux";
+import {IProject} from "../dtos/IProject";
 
 
 export interface IBaseState {
@@ -21,9 +22,15 @@ export interface IBlogState extends IBaseState {
     searchTerm: string,
 }
 
+export interface IAboutMeState extends IBaseState {
+    projects: Array<IProject>,
+    workExperience: Array<IProject>,
+}
+
 export interface IStoreState {
     readonly authState: IAuthState;
     readonly blogState: IBlogState;
+    readonly aboutMeState: IAboutMeState;
 }
 
 export type AppThunkType<ReturnType = void> = ThunkAction<

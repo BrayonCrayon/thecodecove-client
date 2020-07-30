@@ -7,6 +7,7 @@ import ViewPost        from './views/Blog/Posts/View';
 import Dashboard       from './views/Dashboard/Index';
 import Create          from "./views/Blog/Posts/Create";
 import EditPost        from "./views/Blog/Posts/Edit";
+import AboutMe         from './views/public_pages/AboutMe';
 // import NotFound from './views/NotFound/NotFound'// User is LoggedIn
 // import PrivateRoute from './PrivateRoute'
 // import Dashboard from './views/user/Dashboard/Dashboard';
@@ -17,6 +18,7 @@ const Router = () => (
         <Route path='/login' component={Login}/>
         <Route path='/register' component={Register}/>
         <Route path='/blog' component={Blog}/>
+        <Route path='/about-me' component={AboutMe}/>
         <Route exact path='/post/view/:id' component={ViewPost}/>
         <Route exact path='/post/edit/:id' component={EditPost}/>
         <Route exact path='/post/create' component={Create}/>

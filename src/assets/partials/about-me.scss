@@ -1,0 +1,23 @@
+
+.modal-sm {
+  @apply bg-white self-center p-2 rounded shadow-md;
+  height: 200px;
+  width: 400px;
+}
+
+.modal-md {
+  @apply bg-white self-center p-2 rounded shadow-md;
+  height: 400px;
+  width: 800px;
+}
+
+.modal-lg {
+  @apply bg-white self-center p-2 rounded shadow-md;
+  height: 600px;
+  width: 1000px;
+}
+
+.img-view {
+  @apply border-2 border-gray-400 rounded;
+  height: 800px;
+}

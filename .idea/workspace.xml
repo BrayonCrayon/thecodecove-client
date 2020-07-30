@@ -2,10 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1aeafd3-9253-4d06-be70-38fef6c8bbd7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/images/profilePhoto.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/partials/about-me.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dtos/IProject.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/AboutMeReducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/components/ImageViewer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/components/Project.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/components/Skill.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/public_pages/AboutMe.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/BlogActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/BlogActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Create.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/Index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/Index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Router.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/partials/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/partials/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/Helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/Helper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/RootReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/RootReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/StoreState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/StoreState.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/layouts/NavMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layouts/NavMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +64,8 @@
       <recent name="C:\Development\thecodecove-client\src\views\auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Development\thecodecove-client\src\declarations" />
+      <recent name="C:\Development\thecodecove-client\src\assets\images" />
       <recent name="C:\Development\thecodecove-client\src\store" />
       <recent name="C:\Development\thecodecove-client\src\assets" />
     </key>
@@ -75,7 +93,11 @@
       <workItem from="1594299932698" duration="16093000" />
       <workItem from="1594377128875" duration="13406000" />
       <workItem from="1594645991233" duration="10275000" />
-      <workItem from="1594988083044" duration="2472000" />
+      <workItem from="1594988083044" duration="9985000" />
+      <workItem from="1595102070324" duration="4411000" />
+      <workItem from="1595594079774" duration="14369000" />
+      <workItem from="1595853011864" duration="17913000" />
+      <workItem from="1596124626054" duration="6041000" />
     </task>
     <servers />
   </component>
@@ -83,10 +105,31 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1209" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594651589681">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="711" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594997841392">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1209" y="310" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1594651589681" />
+    <state x="711" y="310" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594997841392" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595598251052">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595598251052" />
+    <state width="1899" height="275" key="GridCell.Tab.0.bottom" timestamp="1595635801780">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595635801780" />
+    <state width="1899" height="275" key="GridCell.Tab.0.center" timestamp="1595635801780">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595635801780" />
+    <state width="1899" height="275" key="GridCell.Tab.0.left" timestamp="1595635801780">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595635801780" />
+    <state width="1899" height="275" key="GridCell.Tab.0.right" timestamp="1595635801780">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595635801780" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1594307949077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

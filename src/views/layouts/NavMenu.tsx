@@ -9,6 +9,7 @@ import {IStoreState} from "../../store/StoreState";
 import {User} from "../../dtos/User";
 import {Link, useHistory} from "react-router-dom";
 import {setPostsSearchTerm} from "../../actions/BlogActions";
+
 const _ = require('lodash');
 
 export interface NavMenuProps {
@@ -49,13 +50,15 @@ const NavMenu = ({loggedIn}: NavMenuProps) => {
 
     const logoutCallback = useCallback(() => {
         dispatch(logout());
-    }, [dispatch]);
+        toggle();
+    }, [dispatch, toggle]);
 
     const showLoginLogout = () => {
         if (!loggedIn) {
             return (
                 <div className="self-center text-center px-2">
-                    <Link className="hover:no-underline text-black hover:text-gray-600" to="/login">Login</Link>
+                    <Link className="hover:no-underline text-black hover:text-gray-600" to="/login"
+                          onClick={toggle}>Login</Link>
                 </div>
             )
         }
@@ -69,7 +72,7 @@ const NavMenu = ({loggedIn}: NavMenuProps) => {
     };
 
     return (
-        <nav className="w-full shadow-md flex flex-wrap md:flex-row">
+        <nav className="w-full shadow-md flex bg-white flex-wrap md:flex-row">
             <div className="w-full flex flex-wrap px-4 lg:w-1/2 lg:flex-row">
                 <div
                     className="animate__animated animate__bounce animate__delay-2s w-full flex justify-between lg:w-auto lg:justify-start">
@@ -82,17 +85,19 @@ const NavMenu = ({loggedIn}: NavMenuProps) => {
                 <div
                     className={`${navLinkClass} w-full flex-col text-md border-b border-gray-500 lg:border-none lg:flex lg:text-lg lg:w-1/2 lg:flex-row lg:ml-4 `}>
                     <div className="self-center text-center px-2">
-                        <Link to="/blog" className="hover:no-underline text-black hover:text-gray-600">Blog</Link>
+                        <Link to="/blog" className="hover:no-underline text-black hover:text-gray-600"
+                              onClick={toggle}>Blog</Link>
                     </div>
                     <div className="self-center text-center px-2">
-                        <Link to="/about-me" className="hover:no-underline text-black hover:text-gray-600">About
+                        <Link to="/about-me" className="hover:no-underline text-black hover:text-gray-600"
+                              onClick={toggle}>About
                             Me</Link>
                     </div>
                     {
                         loggedIn &&
                         <div className="self-center text-center px-2">
                             <Link className="hover:no-underline text-black hover:text-gray-600"
-                                  to="/dashboard">Dashboard</Link>
+                                  to="/dashboard" onClick={toggle}>Dashboard</Link>
                         </div>
                     }
                     {

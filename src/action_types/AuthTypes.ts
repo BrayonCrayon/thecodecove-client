@@ -80,7 +80,6 @@ export interface ILogoutSuccess extends IBaseState {
 
 export interface ILogoutFailure extends IBaseState {
     type: typeof LOGOUT_FAILURE,
-    error: Object,
 }
 
 /**
@@ -105,10 +104,52 @@ export interface ISetLoggedInFailure extends IBaseState {
 }
 
 /**
+ * Social User Login (Github, Google, Twitter, Facebook)
+ */
+export const SOCIAL_LOGIN_REQUEST_PENDING = "SOCIAL_LOGIN_REQUEST_PENDING";
+export const SOCIAL_LOGIN_REQUEST_SUCCESS = "SOCIAL_LOGIN_REQUEST_SUCCESS";
+export const SOCIAL_LOGIN_REQUEST_FAILURE = "SOCIAL_LOGIN_REQUEST_FAILURE";
+
+export interface ISocialLoginRequestPending extends IBaseState {
+    type: typeof SOCIAL_LOGIN_REQUEST_PENDING,
+}
+
+export interface ISocialLoginRequestSuccess extends IBaseState {
+    type: typeof SOCIAL_LOGIN_REQUEST_SUCCESS,
+}
+
+export interface ISocialLoginRequestFailure extends IBaseState {
+    type: typeof SOCIAL_LOGIN_REQUEST_FAILURE,
+}
+
+/**
+ * Social User Login Callback (Github, Google, Twitter, Facebook)
+ */
+export const SOCIAL_LOGIN_CALLBACK_PENDING = "SOCIAL_LOGIN_CALLBACK_PENDING";
+export const SOCIAL_LOGIN_CALLBACK_SUCCESS = "SOCIAL_LOGIN_CALLBACK_SUCCESS";
+export const SOCIAL_LOGIN_CALLBACK_FAILURE = "SOCIAL_LOGIN_CALLBACK_FAILURE";
+
+export interface ISocialLoginCallbackPending extends IBaseState {
+    type: typeof SOCIAL_LOGIN_CALLBACK_PENDING,
+}
+
+export interface ISocialLoginCallbackSuccess extends IBaseState {
+    type: typeof SOCIAL_LOGIN_CALLBACK_SUCCESS,
+    loggedIn: Boolean,
+    user?: User,
+}
+
+export interface ISocialLoginCallbackFailure extends IBaseState {
+    type: typeof SOCIAL_LOGIN_CALLBACK_FAILURE,
+}
+
+/**
  * Export Auth Types
  */
 export type AuthTypes =
     ILoginPending | ILoginSuccess | ILoginFailure |
     IRegisterPending | IRegisterSuccess | IRegisterFailure |
     ILogoutPending | ILogoutSuccess | ILogoutFailure |
-    ISetLoggedInPending | ISetLoggedInSuccess | ISetLoggedInFailure;
+    ISetLoggedInPending | ISetLoggedInSuccess | ISetLoggedInFailure |
+    ISocialLoginRequestPending | ISocialLoginRequestSuccess | ISocialLoginRequestFailure |
+    ISocialLoginCallbackPending | ISocialLoginCallbackSuccess | ISocialLoginCallbackFailure;

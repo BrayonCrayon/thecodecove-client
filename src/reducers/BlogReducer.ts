@@ -104,6 +104,65 @@ export function blogReducer(state = initialState, action: BlogActionTypes.BlogTy
                 ...state,
                 ...action,
             }
+        case BlogActionTypes.DELETE_POST_PENDING:
+        case BlogActionTypes.DELETE_POST_FAILURE:
+        case BlogActionTypes.DELETE_POST_SUCCESS:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.REMOVE_PUBLISHED_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(p => p.id !== action.post.id),
+            }
+        case BlogActionTypes.REMOVE_DRAFTED_POST:
+            return {
+                ...state,
+                draftedPosts: state.draftedPosts.filter(p => p.id !== action.post.id),
+            }
+        case BlogActionTypes.FETCH_COMMENTS_PENDING:
+        case BlogActionTypes.FETCH_COMMENTS_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.FETCH_COMMENTS_SUCCESS:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    comments: action.comments,
+                }
+            }
+        case BlogActionTypes.FETCH_NESTED_COMMENTS_PENDING:
+        case BlogActionTypes.FETCH_NESTED_COMMENTS_FAILURE:
+        case BlogActionTypes.FETCH_NESTED_COMMENTS_SUCCESS:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.ADD_COMMENT_PENDING:
+        case BlogActionTypes.ADD_COMMENT_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.ADD_COMMENT_SUCCESS:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    comments: [action.comment].concat(state.post.comments)
+                }
+            }
+        case BlogActionTypes.ADD_NESTED_COMMENT_PENDING:
+        case BlogActionTypes.ADD_NESTED_COMMENT_SUCCESS:
+        case BlogActionTypes.ADD_NESTED_COMMENT_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
         default:
             return state
     }

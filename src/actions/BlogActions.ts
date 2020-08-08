@@ -3,6 +3,7 @@ import {apiAxios} from "../store/Store";
 import * as BlogActionTypes from "../action_types/BlogTypes";
 import {Post} from "../dtos/Post";
 import {IStatus} from "../dtos/IStatus";
+import {IComment} from "../dtos/IComment";
 
 
 export function FetchPostsPending(): BlogActionTypes.IFetchPostsPending {
@@ -384,6 +385,284 @@ export const fetchDraftedPosts = () : AppThunkType => {
         catch(error)
         {
             dispatch(fetchDraftedPostsFailure(error));
+        }
+    }
+}
+
+/**
+ * Delete Post
+ */
+export function deletePostPending() : BlogActionTypes.IDeletePostPending {
+    return {
+        type: BlogActionTypes.DELETE_POST_PENDING,
+        pending: true,
+        error: {},
+    }
+}
+
+export function deletePostSuccess() : BlogActionTypes.IDeletePostSuccess {
+    return {
+        type: BlogActionTypes.DELETE_POST_SUCCESS,
+        pending: false,
+        error: {}
+    }
+}
+
+export function deletePostFailure(error: Object) : BlogActionTypes.IDeletePostFailure {
+    return {
+        type: BlogActionTypes.DELETE_POST_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+export const deletePost = (post: Post) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(deletePostPending());
+            await apiAxios.delete(`api/posts/${post.id}`);
+            dispatch(deletePostSuccess());
+            dispatch(removePost(post));
+        }
+        catch (error)
+        {
+            dispatch(deletePostFailure(error));
+        }
+    }
+}
+
+/**
+ *  Remove Published Post
+ */
+export function removePublishedPost(post: Post) : BlogActionTypes.IRemovePublishedPost {
+    return {
+        type: BlogActionTypes.REMOVE_PUBLISHED_POST,
+        post,
+        pending: false,
+        error: {}
+    }
+}
+
+/**
+ * Remove Drafted Post
+ */
+export function removeDraftedPost(post: Post) : BlogActionTypes.IRemoveDraftedPost {
+    return {
+        type: BlogActionTypes.REMOVE_DRAFTED_POST,
+        post,
+        pending: false,
+        error: {}
+    }
+}
+
+/**
+ * Remove Post
+ */
+export const removePost = (post: Post) : AppThunkType => {
+    return async dispatch => {
+        post.published_at ? dispatch(removePublishedPost(post)) : dispatch(removeDraftedPost(post));
+    }
+}
+
+/**
+ * Fetch Comments
+ */
+export function fetchCommentsPending() : BlogActionTypes.IFetchCommentsPending {
+    return {
+        type: BlogActionTypes.FETCH_COMMENTS_PENDING,
+        error: {},
+        pending: true,
+    }
+}
+
+export function fetchCommentsSuccess(comments: Array<IComment>) : BlogActionTypes.IFetchCommentsSuccess {
+    return {
+        type: BlogActionTypes.FETCH_COMMENTS_SUCCESS,
+        error: {},
+        pending: false,
+        comments,
+    }
+}
+
+export function fetchCommentsFailure(error: Object) : BlogActionTypes.IFetchCommentsFailure {
+    return {
+        type: BlogActionTypes.FETCH_COMMENTS_FAILURE,
+        error,
+        pending: false,
+    }
+}
+
+interface IFetchCommentsPayload {
+    postId: number,
+}
+
+export const fetchComments = (payload: IFetchCommentsPayload) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(fetchCommentsPending());
+            const {data} = await apiAxios.get(`api/comments/root/${payload.postId}`);
+            dispatch(fetchCommentsSuccess(data));
+        }
+        catch(error)
+        {
+            dispatch(fetchCommentsFailure(error));
+        }
+    }
+}
+
+/**
+ * Fetch Nested Comments
+ */
+
+export function fetchNestedCommentsPending() : BlogActionTypes.IFetchNestedCommentsPending {
+    return {
+        type: BlogActionTypes.FETCH_NESTED_COMMENTS_PENDING,
+        error: {},
+        pending: true,
+    }
+}
+
+export function fetchNestedCommentsSuccess() : BlogActionTypes.IFetchNestedCommentsSuccess {
+    return {
+        type: BlogActionTypes.FETCH_NESTED_COMMENTS_SUCCESS,
+        error: {},
+        pending: false,
+    }
+}
+
+export function fetchNestedCommentsFailure(error: Object) : BlogActionTypes.IFetchNestedCommentsFailure {
+    return {
+        type: BlogActionTypes.FETCH_NESTED_COMMENTS_FAILURE,
+        error,
+        pending: false,
+    }
+}
+
+interface IFetchNestedCommentsPayload {
+    comment: IComment,
+}
+
+
+export const fetchNestedComments = (payload: IFetchNestedCommentsPayload) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(fetchNestedCommentsPending());
+            const {data} = await apiAxios.get(`api/comments/nested/${payload.comment.id}`);
+
+            if (!payload.comment.comments) {
+                payload.comment.comments = [];
+            }
+            payload.comment.comments = payload.comment.comments.concat(data);
+            dispatch(fetchNestedCommentsSuccess());
+        }
+        catch (error)
+        {
+            dispatch(fetchNestedCommentsFailure(error));
+        }
+    }
+}
+
+
+/**
+ * Add Comment
+ */
+export function addCommentPending() : BlogActionTypes.IAddCommentPending {
+    return {
+        type: BlogActionTypes.ADD_COMMENT_PENDING,
+        error: {},
+        pending: true,
+    }
+}
+
+export function addCommentSuccess(comment: IComment) : BlogActionTypes.IAddCommentSuccess {
+    return {
+        type: BlogActionTypes.ADD_COMMENT_SUCCESS,
+        comment,
+        pending: false,
+        error: {},
+    }
+}
+
+export function addCommentFailure(error: Object) : BlogActionTypes.IAddCommentFailure {
+    return {
+        type: BlogActionTypes.ADD_COMMENT_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+interface IAddCommentPayload {
+    post_id?: number,
+    text: string,
+    user_id: number,
+    parent_id?: number,
+}
+
+export const addComment = (payload: IAddCommentPayload) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(addCommentPending());
+            const {data} = await apiAxios.post('api/comments/store', {
+                ...payload,
+            });
+            dispatch(addCommentSuccess(data));
+        }
+        catch (error)
+        {
+            dispatch(addCommentFailure(error));
+        }
+    }
+}
+
+/**
+ * Add Nested Comment
+ */
+export function addNestedCommentPending() : BlogActionTypes.IAddNestedCommentPending {
+    return {
+        type: BlogActionTypes.ADD_NESTED_COMMENT_PENDING,
+        error: {},
+        pending: true,
+    }
+}
+
+export function addNestedCommentSuccess() : BlogActionTypes.IAddNestedCommentSuccess {
+    return {
+        type: BlogActionTypes.ADD_NESTED_COMMENT_SUCCESS,
+        pending: false,
+        error: {},
+    }
+}
+
+export function addNestedCommentFailure(error: Object) : BlogActionTypes.IAddNestedCommentFailure {
+    return {
+        type: BlogActionTypes.ADD_NESTED_COMMENT_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+export const addNestedComment = (payload: IAddCommentPayload, parent: IComment) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(addNestedCommentPending());
+            const {data} = await apiAxios.post('api/comments/store', {
+                ...payload,
+            });
+
+            if (!parent.comments) {
+                parent.comments = [];
+            }
+            parent.comments = [data].concat(parent.comments);
+            dispatch(addNestedCommentSuccess());
+        }
+        catch (error)
+        {
+            dispatch(addNestedCommentFailure(error));
         }
     }
 }

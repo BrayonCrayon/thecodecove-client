@@ -2,23 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1aeafd3-9253-4d06-be70-38fef6c8bbd7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dtos/IStatus.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Dashboard/partials/DraftedPosts.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dtos/IComment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Blog/Comments/AddComment.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Blog/Comments/Comment.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Blog/Comments/CommentSection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/components/LoadingSpinner.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/action_types/AuthTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/action_types/AuthTypes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/AuthActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/AuthActions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/BlogActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/BlogActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/partials/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/partials/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dtos/Post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/Post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtos/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/AuthReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/AuthReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/Helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/Helper.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/StoreState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/StoreState.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Blog/Blog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Blog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Edit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Edit.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Tile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Tile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/Index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/Index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/View.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/View.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/auth/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,18 +59,18 @@
     <property name="ts.external.directory.path" value="C:\Development\thecodecove-client\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Development\thecodecove-client\src\declarations" />
+      <recent name="C:\Development\thecodecove-client\src\assets\images" />
+      <recent name="C:\Development\thecodecove-client\src\store" />
+      <recent name="C:\Development\thecodecove-client\src\assets" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Development\thecodecove-client\src\dtos" />
       <recent name="C:\Development\thecodecove-client\src\views\components" />
       <recent name="C:\Development\thecodecove-client\src\views\layouts" />
       <recent name="C:\Development\thecodecove-client\src\views\public_pages" />
       <recent name="C:\Development\thecodecove-client\src\views\auth" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Development\thecodecove-client\src\declarations" />
-      <recent name="C:\Development\thecodecove-client\src\assets\images" />
-      <recent name="C:\Development\thecodecove-client\src\store" />
-      <recent name="C:\Development\thecodecove-client\src\assets" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -101,6 +105,17 @@
       <workItem from="1596275845621" duration="561000" />
       <workItem from="1596276947472" duration="106000" />
       <workItem from="1596548777741" duration="4713000" />
+      <workItem from="1596892517649" duration="1099000" />
+      <workItem from="1596914888482" duration="6616000" />
+      <workItem from="1597087579341" duration="600000" />
+      <workItem from="1597340560997" duration="602000" />
+      <workItem from="1597760811500" duration="9242000" />
+      <workItem from="1598280243985" duration="11544000" />
+      <workItem from="1598441990184" duration="9502000" />
+      <workItem from="1600266891766" duration="3000" />
+      <workItem from="1600287158124" duration="5550000" />
+      <workItem from="1600693639117" duration="17344000" />
+      <workItem from="1600780134360" duration="9112000" />
     </task>
     <servers />
   </component>
@@ -108,10 +123,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="711" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594997841392">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1209" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598280575618">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1209" y="310" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1594651589681" />
+    <state x="-1209" y="310" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1598280575618" />
     <state x="711" y="310" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594997841392" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595598251052">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -121,21 +136,25 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1180" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1596277051874" />
-    <state width="1899" height="275" key="GridCell.Tab.0.bottom" timestamp="1595635801780">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="275" key="GridCell.Tab.0.bottom" timestamp="1596923487067">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1596923487067" />
     <state width="1899" height="275" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595635801780" />
-    <state width="1899" height="275" key="GridCell.Tab.0.center" timestamp="1595635801780">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="275" key="GridCell.Tab.0.center" timestamp="1596923487067">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1596923487067" />
     <state width="1899" height="275" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595635801780" />
-    <state width="1899" height="275" key="GridCell.Tab.0.left" timestamp="1595635801780">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="275" key="GridCell.Tab.0.left" timestamp="1596923487067">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1596923487067" />
     <state width="1899" height="275" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595635801780" />
-    <state width="1899" height="275" key="GridCell.Tab.0.right" timestamp="1595635801780">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="275" key="GridCell.Tab.0.right" timestamp="1596923487067">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1596923487067" />
     <state width="1899" height="275" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595635801780" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1594307949077">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -145,17 +164,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="540" height="540" key="StructurePopup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596213107344" />
-    <state x="224" y="197" width="1644" height="1022" key="dock-window-1" timestamp="1594312796895">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="224" y="197" width="1644" height="1022" key="dock-window-1/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594312796895" />
-    <state x="668" y="237" width="583" height="566" key="find.popup" timestamp="1596216614280">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="668" y="237" width="583" height="566" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596216614280" />
-    <state x="-1304" y="240" key="run.anything.popup" timestamp="1594326434178">
+    <state x="-1344" y="195" width="1510" height="1022" key="dock-window-1" timestamp="1596923698981">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1304" y="240" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1594326434178" />
+    <state x="-1344" y="195" width="1510" height="1022" key="dock-window-1/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1596923698981" />
+    <state x="224" y="197" width="1644" height="1022" key="dock-window-1/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594312796895" />
+    <state x="668" y="237" width="583" height="566" key="find.popup" timestamp="1600695018167">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="668" y="237" width="583" height="566" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1600695018167" />
+    <state x="-1304" y="240" key="run.anything.popup" timestamp="1598280888117">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1304" y="240" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1598280888117" />
   </component>
 </project>

@@ -43,6 +43,20 @@ export function authReducer(state = initialState, action: AuthActionTypes.AuthTy
                 ...state,
                 ...action,
             }
+        case AuthActionTypes.SOCIAL_LOGIN_REQUEST_PENDING:
+        case AuthActionTypes.SOCIAL_LOGIN_REQUEST_SUCCESS:
+        case AuthActionTypes.SOCIAL_LOGIN_REQUEST_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
+        case AuthActionTypes.SOCIAL_LOGIN_CALLBACK_PENDING:
+        case AuthActionTypes.SOCIAL_LOGIN_CALLBACK_SUCCESS:
+        case AuthActionTypes.SOCIAL_LOGIN_CALLBACK_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
         default:
             return state
     }

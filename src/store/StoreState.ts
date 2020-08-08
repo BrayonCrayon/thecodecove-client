@@ -54,5 +54,6 @@ export function getInitialPostObj() : Post
         updated_at: new Date(),
         user: undefined,
         user_id: -1,
+        comments: [],
     }
 }

@@ -14342,20 +14342,16 @@ video {
   transition-delay: 1000ms;
 }
 
-.blog {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.posts {
-  display: grid;
-  grid-column: 2 / 4;
-  grid-gap: 20px
-}
-
-.post {
-  display: grid;
+.drafted-posts-list {
+  overflow: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  --border-opacity: 1;
+  border-color: #a0aec0;
+  border-color: rgba(160, 174, 192, var(--border-opacity));
+  height: 48rem;
 }
 
 .modal-sm {

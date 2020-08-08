@@ -1,6 +1,7 @@
 import {IBaseState} from "../store/StoreState";
 import {Post} from "../dtos/Post";
 import {IStatus} from "../dtos/IStatus";
+import {IComment} from "../dtos/IComment";
 
 /*
  * Blog Post Fetch
@@ -185,6 +186,124 @@ export interface IFetchDraftedPostsFailure extends IBaseState {
 }
 
 
+/**
+ * Delete Post
+ */
+export const DELETE_POST_PENDING = "DELETE_POST_PENDING";
+export const DELETE_POST_SUCCESS = "DELETE_POST_SUCCESS";
+export const DELETE_POST_FAILURE = "DELETE_POST_FAILURE";
+
+export interface IDeletePostPending extends IBaseState {
+    type: typeof DELETE_POST_PENDING,
+}
+
+export interface IDeletePostSuccess extends IBaseState {
+    type: typeof DELETE_POST_SUCCESS,
+}
+
+export interface IDeletePostFailure extends IBaseState {
+    type: typeof DELETE_POST_FAILURE,
+}
+
+/**
+ * Remove post from published listing
+ */
+export const REMOVE_PUBLISHED_POST = "REMOVE_PUBLISHED_POST";
+
+export interface IRemovePublishedPost extends IBaseState {
+    type: typeof REMOVE_PUBLISHED_POST,
+    post: Post,
+}
+
+/**
+ * Remove post from drafted listing
+ */
+export const REMOVE_DRAFTED_POST = "REMOVE_DRAFTED_POST";
+
+export interface IRemoveDraftedPost extends IBaseState {
+    type: typeof REMOVE_DRAFTED_POST,
+    post: Post,
+}
+
+/**
+ * Fetch Comments
+ */
+export const FETCH_COMMENTS_PENDING = "FETCH_COMMENTS_PENDING";
+export const FETCH_COMMENTS_SUCCESS = "FETCH_COMMENTS_SUCCESS";
+export const FETCH_COMMENTS_FAILURE = "FETCH_COMMENTS_FAILURE";
+
+export interface IFetchCommentsPending extends IBaseState {
+    type: typeof FETCH_COMMENTS_PENDING,
+}
+
+export interface IFetchCommentsSuccess extends IBaseState {
+    type: typeof FETCH_COMMENTS_SUCCESS,
+    comments: Array<IComment>,
+}
+
+export interface IFetchCommentsFailure extends IBaseState {
+    type: typeof FETCH_COMMENTS_FAILURE,
+}
+
+/**
+ * Fetch Nested Comments
+ */
+export const FETCH_NESTED_COMMENTS_PENDING = "FETCH_NESTED_COMMENTS_PENDING";
+export const FETCH_NESTED_COMMENTS_SUCCESS = "FETCH_NESTED_COMMENTS_SUCCESS";
+export const FETCH_NESTED_COMMENTS_FAILURE = "FETCH_NESTED_COMMENTS_FAILURE";
+
+export interface IFetchNestedCommentsPending extends IBaseState {
+    type: typeof FETCH_NESTED_COMMENTS_PENDING,
+}
+
+export interface IFetchNestedCommentsSuccess extends IBaseState {
+    type: typeof FETCH_NESTED_COMMENTS_SUCCESS,
+}
+
+export interface IFetchNestedCommentsFailure extends IBaseState {
+    type: typeof FETCH_NESTED_COMMENTS_FAILURE,
+}
+
+/**
+ * Add Comment
+ */
+export const ADD_COMMENT_PENDING = "ADD_COMMENT_PENDING";
+export const ADD_COMMENT_SUCCESS = "ADD_COMMENT_SUCCESS";
+export const ADD_COMMENT_FAILURE = "ADD_COMMENT_FAILURE";
+
+export interface IAddCommentPending extends IBaseState {
+    type: typeof ADD_COMMENT_PENDING,
+}
+
+export interface IAddCommentSuccess extends IBaseState {
+    type: typeof ADD_COMMENT_SUCCESS,
+    comment: IComment,
+}
+
+export interface IAddCommentFailure extends IBaseState {
+    type: typeof ADD_COMMENT_FAILURE
+}
+
+/**
+ * Add Nested Comment
+ */
+
+export const ADD_NESTED_COMMENT_PENDING = "ADD_NESTED_COMMENT_PENDING";
+export const ADD_NESTED_COMMENT_SUCCESS = "ADD_NESTED_COMMENT_SUCCESS";
+export const ADD_NESTED_COMMENT_FAILURE = "ADD_NESTED_COMMENT_FAILURE";
+
+export interface IAddNestedCommentPending extends IBaseState {
+    type: typeof ADD_NESTED_COMMENT_PENDING,
+}
+
+export interface IAddNestedCommentSuccess extends IBaseState {
+    type: typeof ADD_NESTED_COMMENT_SUCCESS,
+}
+
+export interface IAddNestedCommentFailure extends IBaseState {
+    type: typeof ADD_NESTED_COMMENT_FAILURE
+}
+
 /*
  * Export Blog Types
  */
@@ -214,4 +333,21 @@ export type BlogTypes =
     ISetPostStatus |
     IFetchDraftedPostsPending |
     IFetchDraftedPostsSuccess |
-    IFetchDraftedPostsFailure;
+    IFetchDraftedPostsFailure |
+    IDeletePostPending |
+    IDeletePostSuccess |
+    IDeletePostFailure |
+    IRemovePublishedPost |
+    IRemoveDraftedPost |
+    IFetchCommentsPending |
+    IFetchCommentsSuccess |
+    IFetchCommentsFailure |
+    IFetchNestedCommentsPending |
+    IFetchNestedCommentsSuccess |
+    IFetchNestedCommentsFailure |
+    IAddCommentPending |
+    IAddCommentSuccess |
+    IAddCommentFailure |
+    IAddNestedCommentPending |
+    IAddNestedCommentSuccess |
+    IAddNestedCommentFailure;

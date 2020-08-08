@@ -27,16 +27,16 @@ const Index = ({isAuthenticated, draftedPosts = []} : IIndex) => {
     }, [dispatch, draftedPosts, isAuthenticated]);
 
     return (
-        <div className="grid grid-cols-3 ">
+        <div className="grid grid-cols-12 ">
             {
                 isAuthenticated &&
-                <Link to="/post/create" className="btn-primary col-start-2 col-end-3 text-center">Create Post</Link>
+                <Link to="/post/create" className="btn-primary col-start-4 col-span-1 text-center">Create Post</Link>
             }
             {
                 !isAuthenticated &&
-                <Link to="/login" className="btn-primary col-start-2 col-end-3 text-center" >Login To View Dashboard</Link>
+                <Link to="/login" className="btn-primary col-start-4 col-span-2 text-center" >Login To View Dashboard</Link>
             }
-            <DraftedPosts className="col-start-2 col-end-3" />
+            <DraftedPosts className="col-start-2 col-span-10" />
         </div>
     )
 }

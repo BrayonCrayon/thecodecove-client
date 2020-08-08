@@ -1,18 +1,5 @@
 
-.blog {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(4, 1fr);
+.drafted-posts-list {
+  @apply overflow-auto px-2 border-t-2 border-b-2 border-gray-500;
+  height: 48rem;
 }
-
-
-.posts {
-  display: grid;
-  grid-column: 2 / 4;
-  grid-gap: 20px
-}
-
-.post {
-  display: grid;
-}
-

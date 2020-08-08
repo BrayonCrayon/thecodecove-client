@@ -12,10 +12,10 @@ interface IDraftedPostsProps {
 
 const DraftedPosts = ({draftedPosts = [], className = ''} : IDraftedPostsProps) => {
     return (
-      <div className={className + ' h-64 overflow-auto p-2 rounded border-2 border-gray-500 shadow-inner'}>
+      <div className={className + ' drafted-posts-list'}>
           {
               draftedPosts.map(post =>
-                  <Tile post={post} canEdit={true} key={post.id}/>
+                  <Tile post={post} canEdit={true} key={post.id} className="my-6"/>
               )
           }
       </div>

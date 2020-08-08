@@ -30,3 +30,8 @@ body {
 .form-input:focus {
   @apply shadow-outline;
 }
+
+.form-label {
+  @apply text-gray-700;
+}
+

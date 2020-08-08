@@ -2,17 +2,21 @@ import React, {useCallback, useEffect} from 'react';
 import {IStoreState} from "../../../store/StoreState";
 import {connect, useDispatch} from "react-redux";
 import {Post} from "../../../dtos/Post";
-import {fetchPost, updatePost} from "../../../actions/BlogActions";
+import {fetchPost, updatePost, updatePostContent, updatePostName, updatePostStatus} from "../../../actions/BlogActions";
 import {Button, FormGroup, Input, Label} from "reactstrap";
 import SunEditor from "suneditor-react";
 import {useHistory} from 'react-router-dom';
+import {IStatus} from "../../../dtos/IStatus";
+
+const _ = require('lodash');
 
 interface EditProps {
     post: Post,
     match: any,
+    statuses: Array<IStatus>
 }
 
-const Edit = ({post, match} : EditProps) => {
+const Edit = ({post, match, statuses = []} : EditProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -23,12 +27,17 @@ const Edit = ({post, match} : EditProps) => {
     }, [dispatch, post, match.params.id]);
 
     const handleNameChange = useCallback((e) => {
-        post.name = e.target.value
-    }, [post]);
+        dispatch(updatePostName(e.target.value));
+    }, [dispatch]);
 
     const handleContentChange = useCallback((value) => {
-        post.content = value;
-    }, [post]);
+        dispatch(updatePostContent(value));
+    }, [dispatch]);
+
+    const handleStatusChange = useCallback((e) => {
+        const status = _.find(statuses, { 'id': Number.parseInt(e.target.value)});
+        dispatch(updatePostStatus(status));
+    }, [dispatch, statuses]);
 
     const update = useCallback(async () => {
         await dispatch(updatePost({
@@ -43,9 +52,25 @@ const Edit = ({post, match} : EditProps) => {
                 Edit Post
             </div>
             <FormGroup className="form-control">
-                <Label for="POST_NAME" className="text-black">name</Label>
+                <Label for="POST_NAME" className="form-label">Name</Label>
                 <Input type="text" required className="form-input" name="name" id="POST_NAME" placeholder="Email"
                        value={post.name} onChange={handleNameChange}/>
+            </FormGroup>
+            <FormGroup className="form-control" >
+                <Label for="POST_STATUS" className="form-label" >Status</Label>
+                <Input
+                    id="POST_STATUS"
+                    className="form-input"
+                    value={post.status_id}
+                    type="select"
+                    onChange={handleStatusChange}
+                >
+                    {
+                        statuses.map(status =>
+                            <option  key={status.id} value={status.id}>{status.name}</option>
+                        )
+                    }
+                </Input>
             </FormGroup>
             <FormGroup className="form-control">
                 <Label for="POST_CONTENT" className="text-black">Content</Label>
@@ -63,6 +88,7 @@ const Edit = ({post, match} : EditProps) => {
 export function mapStateToProps(state: IStoreState) {
     return {
         post: state.blogState.post,
+        statuses: state.blogState.statuses,
     }
 }
 

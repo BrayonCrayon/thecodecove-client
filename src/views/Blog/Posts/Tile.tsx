@@ -27,7 +27,7 @@ const Tile = ({post, canEdit}: TileProps) => {
     return (
         <div className="grid grid-cols-12 md:col-start-1 md:col-end-2 lg:col-start-2 lg:col-end-4">
             <Link to={'/post/view/' + post.id}
-                  className="col-start-1 col-span-11 shadow-md rounded-lg p-4 border border-gray-300 hover:shadow-lg bg-white "
+                  className="col-start-1 col-span-12 shadow-md rounded-lg p-4 border border-gray-300 hover:shadow-lg bg-white "
                   onClick={selectPost}
             >
                 <div className="post-header flex justify-between">
@@ -36,7 +36,7 @@ const Tile = ({post, canEdit}: TileProps) => {
                         {post.name}
                     </div>
                     <div className="post-author text-xs text-gray-500 lg:text-base">
-                        Posted: {moment(post.created_at).fromNow()}
+                        Posted: {moment(post.published_at).fromNow()}
                     </div>
                 </div>
                 <div className="post-content truncate h-20 border-2 border-gray-300 p-2  rounded">
@@ -45,7 +45,8 @@ const Tile = ({post, canEdit}: TileProps) => {
             </Link>
             {
                 canEdit &&
-                <Link className="col-span-1 self-center text-center text-2xl" to={'/post/edit/' + post.id}
+                <Link className="text-center text-2xl mb-4"
+                      to={'/post/edit/' + post.id}
                       onClick={editPost}>
                     <FontAwesomeIcon icon={faEdit} className="text-gray-600 hover:text-gray-900"/>
                 </Link>

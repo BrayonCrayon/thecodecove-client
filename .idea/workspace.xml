@@ -2,26 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1aeafd3-9253-4d06-be70-38fef6c8bbd7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/profilePhoto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/partials/about-me.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dtos/IProject.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/AboutMeReducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/components/ImageViewer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/components/Project.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/components/Skill.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/public_pages/AboutMe.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dtos/IStatus.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Dashboard/partials/DraftedPosts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Router.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Router.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/AuthActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/AuthActions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/BlogActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/BlogActions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/partials/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/partials/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dtos/Post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/Post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/Helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/Helper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/RootReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/RootReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/StoreState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/StoreState.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/layouts/NavMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/layouts/NavMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Blog/Blog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Blog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Edit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Edit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Tile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Tile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Dashboard/Index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard/Index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +41,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -97,7 +96,11 @@
       <workItem from="1595102070324" duration="4411000" />
       <workItem from="1595594079774" duration="14369000" />
       <workItem from="1595853011864" duration="17913000" />
-      <workItem from="1596124626054" duration="6041000" />
+      <workItem from="1596124626054" duration="9383000" />
+      <workItem from="1596199976992" duration="9256000" />
+      <workItem from="1596275845621" duration="561000" />
+      <workItem from="1596276947472" duration="106000" />
+      <workItem from="1596548777741" duration="4713000" />
     </task>
     <servers />
   </component>
@@ -114,6 +117,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595598251052" />
+    <state x="-1180" y="275" key="FileChooserDialogImpl" timestamp="1596277051874">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1180" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1596277051874" />
     <state width="1899" height="275" key="GridCell.Tab.0.bottom" timestamp="1595635801780">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -134,10 +141,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594307949077" />
+    <state x="681" y="261" width="540" height="540" key="StructurePopup" timestamp="1596213107344">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="681" y="261" width="540" height="540" key="StructurePopup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596213107344" />
     <state x="224" y="197" width="1644" height="1022" key="dock-window-1" timestamp="1594312796895">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="224" y="197" width="1644" height="1022" key="dock-window-1/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1594312796895" />
+    <state x="668" y="237" width="583" height="566" key="find.popup" timestamp="1596216614280">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="668" y="237" width="583" height="566" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1596216614280" />
     <state x="-1304" y="240" key="run.anything.popup" timestamp="1594326434178">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>

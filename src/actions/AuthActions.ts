@@ -29,6 +29,7 @@ import {
 import {User} from "../dtos/User";
 import {AppThunkType} from "../store/StoreState";
 import {apiAxios} from "../store/Store";
+import {fetchDraftedPosts} from "./BlogActions";
 
 /**
  * LOGIN ACTION
@@ -74,7 +75,8 @@ export const loginAction = (payload: ILoginForm) : AppThunkType => {
             });
             // get logged in user
             const {data} = await apiAxios.get('api/auth/user');
-            dispatch(loginSuccess(data.user));
+            await dispatch(loginSuccess(data.user));
+            dispatch(fetchDraftedPosts());
         }
         catch (error) {
             dispatch(loginFailure(error));

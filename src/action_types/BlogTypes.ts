@@ -1,5 +1,6 @@
 import {IBaseState} from "../store/StoreState";
 import {Post} from "../dtos/Post";
+import {IStatus} from "../dtos/IStatus";
 
 /*
  * Blog Post Fetch
@@ -121,6 +122,69 @@ export interface IUpdatePostFailure extends IBaseState {
     type: typeof UPDATE_POST_FAILURE,
 }
 
+/**
+ * Fetch Statuses
+ */
+export const FETCH_STATUSES_PENDING = "FETCH_STATUSES_PENDING";
+export const FETCH_STATUSES_SUCCESS = "FETCH_STATUSES_SUCCESS";
+export const FETCH_STATUSES_FAILURE = "FETCH_STATUSES_FAILURE";
+
+export interface IFetchStatusesPending extends IBaseState {
+    type: typeof FETCH_STATUSES_PENDING,
+}
+
+export interface IFetchStatusesSuccess extends IBaseState {
+    type: typeof FETCH_STATUSES_SUCCESS,
+    statuses: Array<IStatus>
+}
+
+export interface IFetchStatusesFailure extends IBaseState {
+    type: typeof FETCH_STATUSES_FAILURE,
+}
+
+/**
+ * Update Selected Post Values
+ */
+export const SET_POST_NAME = "SET_POST_NAME";
+export const SET_POST_CONTENT = "SET_POST_CONTENT";
+export const SET_POST_STATUS = "SET_POST_STATUS";
+
+export interface ISetPostName extends IBaseState {
+    type: typeof SET_POST_NAME,
+    name: string,
+}
+
+export interface ISetPostContent extends IBaseState {
+    type: typeof SET_POST_CONTENT
+    content: string,
+}
+
+export interface ISetPostStatus extends IBaseState {
+    type: typeof SET_POST_STATUS,
+    status: IStatus
+}
+
+/**
+ * Fetch Drafted Posts
+ */
+export const FETCH_DRAFTED_POSTS_PENDING = "FETCH_DRAFTED_POSTS_PENDING";
+export const FETCH_DRAFTED_POSTS_SUCCESS = "FETCH_DRAFTED_POSTS_SUCCESS";
+export const FETCH_DRAFTED_POSTS_FAILURE = "FETCH_DRAFTED_POSTS_FAILURE";
+
+export interface IFetchDraftedPostsPending extends IBaseState {
+    type: typeof FETCH_DRAFTED_POSTS_PENDING,
+}
+
+export interface IFetchDraftedPostsSuccess extends IBaseState {
+    type: typeof FETCH_DRAFTED_POSTS_SUCCESS,
+    draftedPosts: Array<Post>,
+}
+
+export interface IFetchDraftedPostsFailure extends IBaseState {
+    type: typeof FETCH_DRAFTED_POSTS_FAILURE,
+}
+
+
 /*
  * Export Blog Types
  */
@@ -141,4 +205,13 @@ export type BlogTypes =
     ICreatePostFailure |
     IUpdatePostPending |
     IUpdatePostSuccess |
-    IUpdatePostFailure;
+    IUpdatePostFailure |
+    IFetchStatusesPending |
+    IFetchStatusesSuccess |
+    IFetchStatusesFailure |
+    ISetPostName |
+    ISetPostContent |
+    ISetPostStatus |
+    IFetchDraftedPostsPending |
+    IFetchDraftedPostsSuccess |
+    IFetchDraftedPostsFailure;

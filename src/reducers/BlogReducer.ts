@@ -7,8 +7,10 @@ const initialState: IBlogState = {
     pending: false,
     posts: [],
     post: getInitialPostObj(),
+    draftedPosts: [],
     error: {},
     searchTerm: '',
+    statuses: [],
 };
 
 export function blogReducer(state = initialState, action: BlogActionTypes.BlogTypes) : IBlogState {
@@ -60,6 +62,44 @@ export function blogReducer(state = initialState, action: BlogActionTypes.BlogTy
         case BlogActionTypes.UPDATE_POST_PENDING:
         case BlogActionTypes.UPDATE_POST_SUCCESS:
         case BlogActionTypes.UPDATE_POST_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.FETCH_STATUSES_PENDING:
+        case BlogActionTypes.FETCH_STATUSES_SUCCESS:
+        case BlogActionTypes.FETCH_STATUSES_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.SET_POST_NAME:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    name: action.name,
+                }
+            }
+        case BlogActionTypes.SET_POST_CONTENT:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    content: action.content,
+                }
+            }
+        case BlogActionTypes.SET_POST_STATUS:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    status_id: action.status.id,
+                }
+            }
+        case BlogActionTypes.FETCH_DRAFTED_POSTS_PENDING:
+        case BlogActionTypes.FETCH_DRAFTED_POSTS_SUCCESS:
+        case BlogActionTypes.FETCH_DRAFTED_POSTS_FAILURE:
             return {
                 ...state,
                 ...action,

@@ -27,6 +27,10 @@ export function findPostById(id: number, posts: Array<Post>) {
     return post ? post : getInitialPostObj();
 }
 
+export function isEmpty(array: Array<Object>) : Boolean {
+    return array.length === 0;
+}
+
 export const DocmosisImages = {
     docmosisCurriculumEdit,
     docmosisAdminMembers,

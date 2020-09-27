@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1aeafd3-9253-4d06-be70-38fef6c8bbd7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dtos/IComment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Blog/Comments/AddComment.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Blog/Comments/Comment.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Blog/Comments/CommentSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/components/LoadingSpinner.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/action_types/AuthTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/action_types/AuthTypes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/AuthActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/AuthActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/BlogActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/BlogActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtos/Post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/Post.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dtos/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/dtos/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/AuthReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/AuthReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/StoreState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/StoreState.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Blog/Blog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Blog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Tile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Tile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/View.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/View.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/auth/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Edit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Edit.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +96,8 @@
       <workItem from="1600266891766" duration="3000" />
       <workItem from="1600287158124" duration="5550000" />
       <workItem from="1600693639117" duration="17344000" />
-      <workItem from="1600780134360" duration="9112000" />
+      <workItem from="1600780134360" duration="10310000" />
+      <workItem from="1601207881342" duration="1677000" />
     </task>
     <servers />
   </component>

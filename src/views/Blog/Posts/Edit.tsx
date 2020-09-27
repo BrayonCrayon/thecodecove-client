@@ -7,6 +7,7 @@ import {Button, FormGroup, Input, Label} from "reactstrap";
 import SunEditor from "suneditor-react";
 import {useHistory} from 'react-router-dom';
 import {IStatus} from "../../../dtos/IStatus";
+import {showToast} from "../../../Utility/Utility";
 
 const _ = require('lodash');
 
@@ -44,6 +45,7 @@ const Edit = ({post, match, statuses = []}: EditProps) => {
             post
         }));
         history.push('/');
+        showToast('Post Updated!');
     }, [dispatch, post, history]);
 
     return (

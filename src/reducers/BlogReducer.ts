@@ -54,7 +54,7 @@ export function blogReducer(state = initialState, action: BlogActionTypes.BlogTy
                 ...action,
             }
         case BlogActionTypes.CREATE_POST_SUCCESS:
-            state.posts.unshift(action.post);
+            state.draftedPosts.unshift(action.post);
             return {
                 ...state,
                 ...action,

@@ -4,6 +4,7 @@ import * as BlogActionTypes from "../action_types/BlogTypes";
 import {Post} from "../dtos/Post";
 import {IStatus} from "../dtos/IStatus";
 import {IComment} from "../dtos/IComment";
+import {showToast} from "../Utility/Utility";
 
 
 export function FetchPostsPending(): BlogActionTypes.IFetchPostsPending {
@@ -423,6 +424,7 @@ export const deletePost = (post: Post) : AppThunkType => {
             dispatch(deletePostPending());
             await apiAxios.delete(`api/posts/${post.id}`);
             dispatch(deletePostSuccess());
+            showToast(`Post "${post.name}" Deleted!`);
             dispatch(removePost(post));
         }
         catch (error)
@@ -609,6 +611,8 @@ export const addComment = (payload: IAddCommentPayload) : AppThunkType => {
             const {data} = await apiAxios.post('api/comments/store', {
                 ...payload,
             });
+            showToast('Comment Added!');
+            console.log(data);
             dispatch(addCommentSuccess(data));
         }
         catch (error)
@@ -658,6 +662,7 @@ export const addNestedComment = (payload: IAddCommentPayload, parent: IComment) 
                 parent.comments = [];
             }
             parent.comments = [data].concat(parent.comments);
+            showToast('Comment Added!');
             dispatch(addNestedCommentSuccess());
         }
         catch (error)

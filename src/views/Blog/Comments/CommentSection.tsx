@@ -1,34 +1,21 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {getInitialPostObj, IStoreState} from "../../../store/StoreState";
+import React, {useCallback} from 'react';
+import {IStoreState} from "../../../store/StoreState";
 import {connect, useDispatch} from "react-redux";
-import {IComment} from "../../../dtos/IComment";
 import Comment from './Comment';
 import AddComment from "./AddComment";
-import {addComment, fetchComments} from "../../../actions/BlogActions";
+import {addComment} from "../../../actions/BlogActions";
 import {Post} from "../../../dtos/Post";
 import {User} from "../../../dtos/User";
-import LoadingSpinner from "../../components/LoadingSpinner";
 
 interface ICommentSectionProps {
-    comments?: Array<IComment>,
-    post?: Post,
+    post: Post,
     user?: User,
 }
 
-const CommentSection = ({comments = [], post = getInitialPostObj(), user = undefined}: ICommentSectionProps) => {
+const CommentSection = ({post, user = undefined}: ICommentSectionProps) => {
 
-    const [commentsLoaded, setCommentsLoaded] = useState(false);
     const Swal = require('sweetalert2');
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        if (!commentsLoaded && post.id > 0) {
-            dispatch(fetchComments({
-                postId: post.id,
-            }));
-            setCommentsLoaded(true);
-        }
-    }, [commentsLoaded, post, dispatch])
 
     const onCommentSave = useCallback((value) => {
         if (user !== undefined && user.id < 0) {
@@ -48,7 +35,7 @@ const CommentSection = ({comments = [], post = getInitialPostObj(), user = undef
             },
         ));
     }, [Swal, post, user, dispatch]);
-
+    
     return (
         <div className="flex flex-col justify-center">
             <div className="flex flex-wrap justify-between w-1/2 self-center border-b-2 relative">
@@ -60,15 +47,17 @@ const CommentSection = ({comments = [], post = getInitialPostObj(), user = undef
                             contentClassName="w-full"
                             save={onCommentSave} className="w-full flex flex-wrap"/>
             </div>
-            <LoadingSpinner loading={!commentsLoaded}
-                            className="text-6xl h-full flex justify-center my-6"/>
             {
-                !comments?.length ? <div/> :
-                    comments.map(item => (
+                post.comments !== undefined && post.comments.length > 0 ?
+                    post.comments.map(item => (
                         <Comment className="flex flex-col justify-center w-1/2 self-center border-b-2 mt-4"
                                  comment={item}
                                  key={item.id}/>
-                    ))
+                    )) :
+                    <div
+                        className="flex flex-col justify-center w-1/2 self-center text-center text-2xl font-semibold mt-4">
+                        No Comments Available
+                    </div>
             }
         </div>
     )
@@ -76,7 +65,6 @@ const CommentSection = ({comments = [], post = getInitialPostObj(), user = undef
 
 function mapStateToProps(state: IStoreState) {
     return {
-        comments: state.blogState.post.comments,
         post: state.blogState.post,
         user: state.authState.user,
     }

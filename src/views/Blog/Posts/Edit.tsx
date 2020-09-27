@@ -16,7 +16,7 @@ interface EditProps {
     statuses: Array<IStatus>
 }
 
-const Edit = ({post, match, statuses = []} : EditProps) => {
+const Edit = ({post, match, statuses = []}: EditProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -35,7 +35,7 @@ const Edit = ({post, match, statuses = []} : EditProps) => {
     }, [dispatch]);
 
     const handleStatusChange = useCallback((e) => {
-        const status = _.find(statuses, { 'id': Number.parseInt(e.target.value)});
+        const status = _.find(statuses, {'id': Number.parseInt(e.target.value)});
         dispatch(updatePostStatus(status));
     }, [dispatch, statuses]);
 
@@ -56,8 +56,8 @@ const Edit = ({post, match, statuses = []} : EditProps) => {
                 <Input type="text" required className="form-input" name="name" id="POST_NAME" placeholder="Email"
                        value={post.name} onChange={handleNameChange}/>
             </FormGroup>
-            <FormGroup className="form-control" >
-                <Label for="POST_STATUS" className="form-label" >Status</Label>
+            <FormGroup className="form-control">
+                <Label for="POST_STATUS" className="form-label">Status</Label>
                 <Input
                     id="POST_STATUS"
                     className="form-input"
@@ -67,7 +67,7 @@ const Edit = ({post, match, statuses = []} : EditProps) => {
                 >
                     {
                         statuses.map(status =>
-                            <option  key={status.id} value={status.id}>{status.name}</option>
+                            <option key={status.id} value={status.id}>{status.name}</option>
                         )
                     }
                 </Input>
@@ -76,6 +76,16 @@ const Edit = ({post, match, statuses = []} : EditProps) => {
                 <Label for="POST_CONTENT" className="text-black">Content</Label>
                 <SunEditor setOptions={{
                     height: 500,
+                    buttonList: [
+                        ['undo', 'redo',],
+                        ['font', 'fontSize', 'formatBlock',],
+                        ['paragraphStyle', 'blockquote',
+                            'bold', 'underline', 'italic', 'strike', 'subscript', 'superscript',
+                            'fontColor', 'hiliteColor', 'textStyle',
+                            'removeFormat',],
+                        ['outdent', 'indent',],
+                        ['align', 'horizontalRule', 'list', 'lineHeight'],
+                    ],
                 }}
                            setContents={post.content}
                            onChange={handleContentChange}/>

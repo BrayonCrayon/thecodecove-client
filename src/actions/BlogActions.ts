@@ -671,3 +671,51 @@ export const addNestedComment = (payload: IAddCommentPayload, parent: IComment) 
         }
     }
 }
+
+/**
+ *  Update Comment
+ */
+export function updateCommentPending() : BlogActionTypes.IUpdateCommentPending {
+    return {
+        type: BlogActionTypes.UPDATE_COMMENT_PENDING,
+        pending: true,
+        error: {}
+    }
+}
+
+export function updateCommentSuccess() : BlogActionTypes.IUpdateCommentSuccess {
+    return {
+        type: BlogActionTypes.UPDATE_COMMENT_SUCCESS,
+        pending: false,
+        error: {},
+    }
+}
+
+export function updateCommentFailure(error: Object) : BlogActionTypes.IUpdateCommentFailure {
+    return {
+        type: BlogActionTypes.UPDATE_COMMENT_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+interface IUpdateCommentActionProps {
+    commentId: number,
+    text: string,
+}
+
+export const updateComment = (payload: IUpdateCommentActionProps) : AppThunkType => {
+    return async dispatch => {
+        try {
+            dispatch(updateCommentPending());
+            await apiAxios.put(`api/comments/${payload.commentId}`, {
+                text: payload.text,
+            });
+            dispatch(updateCommentSuccess());
+            showToast('Comment Updated!');
+        }
+        catch (error) {
+            dispatch(updateCommentFailure(error));
+        }
+    }
+}

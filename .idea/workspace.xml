@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1aeafd3-9253-4d06-be70-38fef6c8bbd7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Utility/Utility.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Blog/Comments/EditComment.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/action_types/BlogTypes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/BlogActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/BlogActions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/BlogReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Blog/Comments/AddComment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Comments/AddComment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Blog/Comments/Comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Comments/Comment.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Blog/Comments/CommentSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Comments/CommentSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Create.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Blog/Posts/Edit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Blog/Posts/Edit.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,9 @@
       <workItem from="1600287158124" duration="5550000" />
       <workItem from="1600693639117" duration="17344000" />
       <workItem from="1600780134360" duration="10310000" />
-      <workItem from="1601207881342" duration="6667000" />
+      <workItem from="1601207881342" duration="7347000" />
+      <workItem from="1601323743687" duration="1160000" />
+      <workItem from="1601740421718" duration="6908000" />
     </task>
     <servers />
   </component>

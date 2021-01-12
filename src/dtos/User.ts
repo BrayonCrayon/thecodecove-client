@@ -1,3 +1,4 @@
+import {IToken} from "./IToken";
 
 export interface User {
     id: number;
@@ -7,4 +8,5 @@ export interface User {
     avatar?: string,
     provider?: string,
     provider_id?: number,
+    tokens?: Array<IToken>,
 }

@@ -304,6 +304,25 @@ export interface IAddNestedCommentFailure extends IBaseState {
     type: typeof ADD_NESTED_COMMENT_FAILURE
 }
 
+/**
+ * Update Comment
+ */
+export const UPDATE_COMMENT_PENDING = "UPDATE_COMMENT_PENDING";
+export const UPDATE_COMMENT_SUCCESS = "UPDATE_COMMENT_SUCCESS";
+export const UPDATE_COMMENT_FAILURE = "UPDATE_COMMENT_FAILURE";
+
+export interface IUpdateCommentPending extends IBaseState {
+    type: typeof UPDATE_COMMENT_PENDING,
+}
+
+export interface IUpdateCommentSuccess extends IBaseState {
+    type: typeof UPDATE_COMMENT_SUCCESS,
+}
+
+export interface IUpdateCommentFailure extends IBaseState {
+    type: typeof UPDATE_COMMENT_FAILURE,
+}
+
 /*
  * Export Blog Types
  */
@@ -350,4 +369,7 @@ export type BlogTypes =
     IAddCommentFailure |
     IAddNestedCommentPending |
     IAddNestedCommentSuccess |
-    IAddNestedCommentFailure;
+    IAddNestedCommentFailure |
+    IUpdateCommentPending |
+    IUpdateCommentSuccess |
+    IUpdateCommentFailure;

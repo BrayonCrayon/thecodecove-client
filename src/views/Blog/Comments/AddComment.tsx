@@ -61,7 +61,7 @@ const AddComment = ({btnName, btnClassName = '', contentClassName = '', classNam
                            setContents={newCommentContent}
                            onChange={handleAddCommentChange}/>
                <button className="btn-primary w-full" onClick={saveComment}>
-                   Save
+                   Add
                </button>
             </div>
         </div>

@@ -42,10 +42,13 @@ const CommentSection = ({post, user = undefined}: ICommentSectionProps) => {
                 <div className="text-lg text-gray-900 w-full">
                     Comments
                 </div>
-                <AddComment btnName="Add"
-                            btnClassName="text-lg text-purple-600 hover:text-purple-900 cursor-pointer absolute top-0 right-0"
-                            contentClassName="w-full"
-                            save={onCommentSave} className="w-full flex flex-wrap"/>
+                {
+                    user !== undefined && user.id > 0 &&
+                    <AddComment btnName="Add"
+                                btnClassName="text-lg text-purple-600 hover:text-purple-900 cursor-pointer absolute top-0 right-0"
+                                contentClassName="w-full"
+                                save={onCommentSave} className="w-full flex flex-wrap"/>
+                }
             </div>
             {
                 post.comments !== undefined && post.comments.length > 0 ?

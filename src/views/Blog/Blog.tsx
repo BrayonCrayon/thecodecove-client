@@ -15,10 +15,11 @@ export interface BlogProps {
     posts: Array<Post>,
     searchTerm: string,
     authed: Boolean,
+    isAdmin: Boolean,
 }
 
 
-const Blog = ({posts = [], searchTerm, authed = false}: BlogProps) => {
+const Blog = ({posts = [], searchTerm, authed = false, isAdmin}: BlogProps) => {
     const dispatch = useDispatch();
     const [postsLoaded, setPostsLoaded] = useState(false);
     const location = useLocation()
@@ -58,7 +59,7 @@ const Blog = ({posts = [], searchTerm, authed = false}: BlogProps) => {
             {
                 posts.filter((post) => post.name.includes(searchTerm))
                     .map((post) => (
-                            <Tile post={post} key={post.id} canEdit={authed}/>
+                            <Tile post={post} key={post.id} canEdit={authed && isAdmin}/>
                     ))
             }
         </div>
@@ -70,6 +71,7 @@ export function mapStateToProps(state: IStoreState) {
         posts: state.blogState.posts,
         searchTerm: state.blogState.searchTerm,
         authed: state.authState.loggedIn,
+        isAdmin: state.authState.user?.tokens?.length ? state.authState.user?.tokens[0].abilities[0] === 'admin' : false
     }
 }
 

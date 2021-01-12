@@ -231,7 +231,6 @@ export const socialLoginRequest = (payload: ISocialLoginRequest) : AppThunkType 
         {
             dispatch(socialLoginRequestPending());
             const {data} = await apiAxios.post('api/login/social', payload);
-            console.log(data);
             window.open(data.targetUrl);
             dispatch(socialLoginRequestSuccess());
         }
@@ -288,7 +287,7 @@ export const socialLoginCallback = (payload: ISocialLoginCallbackProps) : AppThu
                 }
             });
             console.log(data);
-            dispatch(socialLoginCallbackSuccess(data.user));
+            dispatch(socialLoginCallbackSuccess(data));
         }
         catch (error)
         {

@@ -44,11 +44,16 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "build:css": "postcss src/assets/index.scss -o src/assets/index.css",
-    "start": "npm run build:css && react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "hot": "cross-env NODE_ENV=development PUBLIC_URL=\"localhost\" node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -66,8 +71,16 @@
     ]
   },
   "devDependencies": {
-    "postcss-scss": "^2.1.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.6.0",
+    "laravel-mix": "^5.0.7",
+    "postcss-scss": "^3.0.2",
     "sass": "^1.26.10",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^8.0.5",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.12"
   }
 }

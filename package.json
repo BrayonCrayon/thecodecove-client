@@ -20,7 +20,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/reactstrap": "^8.5.0",
     "autoprefixer": "^9.8.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "html-react-parser": "^0.13.0",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",

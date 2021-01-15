@@ -6,6 +6,7 @@ import SunEditor from 'suneditor-react';
 import 'suneditor/dist/css/suneditor.min.css';
 import {createPost} from "../../../actions/BlogActions";
 import {useHistory} from 'react-router-dom';
+import {showToast} from "../../../Utility/Utility";
 
 interface ICreateProps {
     userId: number,
@@ -32,6 +33,7 @@ const Create = ({userId} : ICreateProps) => {
             name,
         }));
         history.push("/blog");
+        showToast('Post Created!');
     }, [dispatch, history, userId, content, name]);
 
     return (
@@ -41,13 +43,23 @@ const Create = ({userId} : ICreateProps) => {
             </div>
             <FormGroup className="form-control">
                 <Label for="POST_NAME" className="text-black">name</Label>
-                <Input type="text" required className="form-input" name="name" id="POST_NAME" placeholder="Email"
+                <Input type="text" required className="form-input" name="name" id="POST_NAME" placeholder="Title"
                        value={name} onChange={handleNameChange}/>
             </FormGroup>
             <FormGroup className="form-control">
                 <Label for="POST_CONTENT" className="text-black">Content</Label>
                 <SunEditor setOptions={{
                     height: 500,
+                    buttonList: [
+                        ['undo', 'redo',],
+                        ['font', 'fontSize', 'formatBlock',],
+                        ['paragraphStyle', 'blockquote',
+                            'bold', 'underline', 'italic', 'strike', 'subscript', 'superscript',
+                            'fontColor', 'hiliteColor', 'textStyle',
+                            'removeFormat',],
+                        ['outdent', 'indent',],
+                        ['align', 'horizontalRule', 'list', 'lineHeight'],
+                    ],
                 }} onChange={handleContentChange}/>
             </FormGroup>
             <Button className="btn-primary" onClick={create}>Create</Button>

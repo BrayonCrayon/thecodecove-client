@@ -7,8 +7,10 @@ const initialState: IBlogState = {
     pending: false,
     posts: [],
     post: getInitialPostObj(),
+    draftedPosts: [],
     error: {},
     searchTerm: '',
+    statuses: [],
 };
 
 export function blogReducer(state = initialState, action: BlogActionTypes.BlogTypes) : IBlogState {
@@ -52,7 +54,7 @@ export function blogReducer(state = initialState, action: BlogActionTypes.BlogTy
                 ...action,
             }
         case BlogActionTypes.CREATE_POST_SUCCESS:
-            state.posts.unshift(action.post);
+            state.draftedPosts.unshift(action.post);
             return {
                 ...state,
                 ...action,
@@ -60,6 +62,103 @@ export function blogReducer(state = initialState, action: BlogActionTypes.BlogTy
         case BlogActionTypes.UPDATE_POST_PENDING:
         case BlogActionTypes.UPDATE_POST_SUCCESS:
         case BlogActionTypes.UPDATE_POST_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.FETCH_STATUSES_PENDING:
+        case BlogActionTypes.FETCH_STATUSES_SUCCESS:
+        case BlogActionTypes.FETCH_STATUSES_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.SET_POST_NAME:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    name: action.name,
+                }
+            }
+        case BlogActionTypes.SET_POST_CONTENT:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    content: action.content,
+                }
+            }
+        case BlogActionTypes.SET_POST_STATUS:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    status_id: action.status.id,
+                }
+            }
+        case BlogActionTypes.FETCH_DRAFTED_POSTS_PENDING:
+        case BlogActionTypes.FETCH_DRAFTED_POSTS_SUCCESS:
+        case BlogActionTypes.FETCH_DRAFTED_POSTS_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.DELETE_POST_PENDING:
+        case BlogActionTypes.DELETE_POST_FAILURE:
+        case BlogActionTypes.DELETE_POST_SUCCESS:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.REMOVE_PUBLISHED_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(p => p.id !== action.post.id),
+            }
+        case BlogActionTypes.REMOVE_DRAFTED_POST:
+            return {
+                ...state,
+                draftedPosts: state.draftedPosts.filter(p => p.id !== action.post.id),
+            }
+        case BlogActionTypes.FETCH_COMMENTS_PENDING:
+        case BlogActionTypes.FETCH_COMMENTS_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.FETCH_COMMENTS_SUCCESS:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    comments: action.comments,
+                }
+            }
+        case BlogActionTypes.FETCH_NESTED_COMMENTS_PENDING:
+        case BlogActionTypes.FETCH_NESTED_COMMENTS_FAILURE:
+        case BlogActionTypes.FETCH_NESTED_COMMENTS_SUCCESS:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.ADD_COMMENT_PENDING:
+        case BlogActionTypes.ADD_COMMENT_FAILURE:
+            return {
+                ...state,
+                ...action,
+            }
+        case BlogActionTypes.ADD_COMMENT_SUCCESS:
+            return {
+                ...state,
+                post: {
+                    ...state.post,
+                    comments: [action.comment].concat(state.post.comments)
+                }
+            }
+        case BlogActionTypes.ADD_NESTED_COMMENT_PENDING:
+        case BlogActionTypes.ADD_NESTED_COMMENT_SUCCESS:
+        case BlogActionTypes.ADD_NESTED_COMMENT_FAILURE:
             return {
                 ...state,
                 ...action,

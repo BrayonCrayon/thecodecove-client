@@ -3,7 +3,7 @@ import {FormGroup, Label, Input, Button} from 'reactstrap';
 import { useHistory } from "react-router-dom";
 import {useCallback, useState} from "react";
 import {useDispatch} from "react-redux";
-import {loginAction} from "../../actions/AuthActions";
+import {loginAction, socialLoginRequest} from "../../actions/AuthActions";
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -27,6 +27,13 @@ const Login = () => {
         history.push("/");
     }, [history, email, password, dispatch]);
 
+    const socialLogin = useCallback(() => {
+        dispatch(socialLoginRequest({
+            social: 'github'
+        }));
+        // history.push("/");
+    }, [dispatch]);
+
     return (
         <div className="w-full flex flex-col p-4 h-full md:w-1/2 md:self-center lg:w-1/3">
             <div className="text-4xl font-bold text-black self-center md:text-5xl lg:text-6xl">
@@ -47,6 +54,7 @@ const Login = () => {
                 />
             </FormGroup>
             <Button className="btn-primary" onClick={loginUser}>Login</Button>
+            <Button className="btn-primary" onClick={socialLogin}>Social Login</Button>
         </div>
     );
 };

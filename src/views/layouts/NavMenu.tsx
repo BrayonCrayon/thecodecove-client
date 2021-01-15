@@ -15,9 +15,10 @@ const _ = require('lodash');
 export interface NavMenuProps {
     user?: User,
     loggedIn: Boolean,
+    isAdmin: Boolean,
 }
 
-const NavMenu = ({loggedIn}: NavMenuProps) => {
+const NavMenu = ({loggedIn, isAdmin}: NavMenuProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [toggleMenu, setToggleMenu] = useState(false);
@@ -94,7 +95,7 @@ const NavMenu = ({loggedIn}: NavMenuProps) => {
                             Me</Link>
                     </div>
                     {
-                        loggedIn &&
+                        loggedIn && isAdmin &&
                         <div className="self-center text-center px-2">
                             <Link className="hover:no-underline text-black hover:text-gray-600"
                                   to="/dashboard" onClick={toggle}>Dashboard</Link>
@@ -116,6 +117,7 @@ const mapStateToProps = (state: IStoreState) => {
     return {
         user: state.authState.user,
         loggedIn: state.authState.loggedIn,
+        isAdmin: state.authState.user?.tokens?.length ? state.authState.user?.tokens[0].abilities[0] === 'admin' : false
     }
 };
 

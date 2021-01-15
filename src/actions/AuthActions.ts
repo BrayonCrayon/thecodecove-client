@@ -1,51 +1,25 @@
-import {
-    ILoginFailure,
-    ILoginForm,
-    ILoginPending,
-    ILoginSuccess,
-    ILogoutFailure,
-    ILogoutPending,
-    ILogoutSuccess,
-    IRegisterFailure,
-    IRegisterForm,
-    IRegisterPending,
-    IRegisterSuccess,
-    ISetLoggedInFailure,
-    ISetLoggedInPending,
-    ISetLoggedInSuccess,
-    LOGIN_FAILURE,
-    LOGIN_PENDING,
-    LOGIN_SUCCESS,
-    LOGOUT_FAILURE,
-    LOGOUT_PENDING,
-    LOGOUT_SUCCESS,
-    REGISTER_FAILURE,
-    REGISTER_PENDING,
-    REGISTER_SUCCESS,
-    SET_LOGGED_IN_FAILURE,
-    SET_LOGGED_IN_PENDING,
-    SET_LOGGED_IN_SUCCESS
-} from "../action_types/AuthTypes";
+import * as AuthTypes from "../action_types/AuthTypes";
 import {User} from "../dtos/User";
 import {AppThunkType} from "../store/StoreState";
 import {apiAxios} from "../store/Store";
+import {fetchDraftedPosts} from "./BlogActions";
 
 /**
  * LOGIN ACTION
  */
 
-export function loginPending() : ILoginPending {
+export function loginPending() : AuthTypes.ILoginPending {
     return {
-        type: LOGIN_PENDING,
+        type: AuthTypes.LOGIN_PENDING,
         loggedIn: false,
         pending: true,
         error: {},
     }
 }
 
-export function loginSuccess(user: User) : ILoginSuccess {
+export function loginSuccess(user: User) : AuthTypes.ILoginSuccess {
     return {
-        type: LOGIN_SUCCESS,
+        type: AuthTypes.LOGIN_SUCCESS,
         loggedIn: true,
         pending: false,
         error: {},
@@ -53,16 +27,16 @@ export function loginSuccess(user: User) : ILoginSuccess {
     }
 }
 
-export function loginFailure(error: Object): ILoginFailure {
+export function loginFailure(error: Object): AuthTypes.ILoginFailure {
     return {
-        type: LOGIN_FAILURE,
+        type: AuthTypes.LOGIN_FAILURE,
         loggedIn: false,
         pending: false,
         error,
     }
 }
 
-export const loginAction = (payload: ILoginForm) : AppThunkType => {
+export const loginAction = (payload: AuthTypes.ILoginForm) : AppThunkType => {
     return async dispatch => {
         try {
             dispatch(loginPending());
@@ -74,7 +48,8 @@ export const loginAction = (payload: ILoginForm) : AppThunkType => {
             });
             // get logged in user
             const {data} = await apiAxios.get('api/auth/user');
-            dispatch(loginSuccess(data.user));
+            await dispatch(loginSuccess(data.user));
+            dispatch(fetchDraftedPosts());
         }
         catch (error) {
             dispatch(loginFailure(error));
@@ -87,17 +62,17 @@ export const loginAction = (payload: ILoginForm) : AppThunkType => {
  * LOGOUT ACTION
  */
 
-export function logoutPending() : ILogoutPending {
+export function logoutPending() : AuthTypes.ILogoutPending {
     return {
-        type: LOGOUT_PENDING,
+        type: AuthTypes.LOGOUT_PENDING,
         pending: true,
         error: {}
     }
 }
 
-export function logoutSuccess() : ILogoutSuccess {
+export function logoutSuccess() : AuthTypes.ILogoutSuccess {
     return {
-        type: LOGOUT_SUCCESS,
+        type: AuthTypes.LOGOUT_SUCCESS,
         pending: false,
         user: undefined,
         loggedIn: false,
@@ -105,9 +80,9 @@ export function logoutSuccess() : ILogoutSuccess {
     }
 }
 
-export function logoutFailure(error: Object) : ILogoutFailure {
+export function logoutFailure(error: Object) : AuthTypes.ILogoutFailure {
     return {
-        type: LOGOUT_FAILURE,
+        type: AuthTypes.LOGOUT_FAILURE,
         pending: false,
         error,
     }
@@ -131,18 +106,18 @@ export const logout = () : AppThunkType => {
 /**
  * REGISTER ACTION
  */
-export function registerPending() : IRegisterPending {
+export function registerPending() : AuthTypes.IRegisterPending {
     return {
-        type: REGISTER_PENDING,
+        type: AuthTypes.REGISTER_PENDING,
         pending: true,
         loggedIn: false,
         error: {}
     }
 }
 
-export function registerSuccess(user: User) : IRegisterSuccess {
+export function registerSuccess(user: User) : AuthTypes.IRegisterSuccess {
     return {
-        type: REGISTER_SUCCESS,
+        type: AuthTypes.REGISTER_SUCCESS,
         pending: false,
         user,
         loggedIn: true,
@@ -150,16 +125,16 @@ export function registerSuccess(user: User) : IRegisterSuccess {
     }
 }
 
-export function registerFailure(error: Object) : IRegisterFailure {
+export function registerFailure(error: Object) : AuthTypes.IRegisterFailure {
     return {
-        type: REGISTER_FAILURE,
+        type: AuthTypes.REGISTER_FAILURE,
         pending: false,
         loggedIn: false,
         error,
     }
 }
 
-export const register = (payload: IRegisterForm) : AppThunkType => {
+export const register = (payload: AuthTypes.IRegisterForm) : AppThunkType => {
     return async dispatch => {
         try {
             dispatch(registerPending());
@@ -180,17 +155,17 @@ export const register = (payload: IRegisterForm) : AppThunkType => {
 /**
  * Set Logged In Action
  */
-export function setLoggedInPending() : ISetLoggedInPending {
+export function setLoggedInPending() : AuthTypes.ISetLoggedInPending {
     return {
-        type: SET_LOGGED_IN_PENDING,
+        type: AuthTypes.SET_LOGGED_IN_PENDING,
         pending: true,
         error: {},
     }
 }
 
-export function setLoggedInSuccess(user: User) : ISetLoggedInSuccess {
+export function setLoggedInSuccess(user: User) : AuthTypes.ISetLoggedInSuccess {
     return {
-        type: SET_LOGGED_IN_SUCCESS,
+        type: AuthTypes.SET_LOGGED_IN_SUCCESS,
         user,
         loggedIn: true,
         pending: false,
@@ -198,9 +173,9 @@ export function setLoggedInSuccess(user: User) : ISetLoggedInSuccess {
     }
 }
 
-export function setLoggedInFailure(error: Object) : ISetLoggedInFailure {
+export function setLoggedInFailure(error: Object) : AuthTypes.ISetLoggedInFailure {
     return {
-        type: SET_LOGGED_IN_FAILURE,
+        type: AuthTypes.SET_LOGGED_IN_FAILURE,
         pending: false,
         error
     }
@@ -215,6 +190,108 @@ export const setLoggedIn = () : AppThunkType => {
         }
         catch(error) {
             dispatch(setLoggedInFailure(error));
+        }
+    }
+}
+
+/**
+ * Social Login
+ */
+export function socialLoginRequestPending() : AuthTypes.ISocialLoginRequestPending {
+    return {
+        type: AuthTypes.SOCIAL_LOGIN_REQUEST_PENDING,
+        pending: true,
+        error: {}
+    }
+}
+
+export function socialLoginRequestSuccess() : AuthTypes.ISocialLoginRequestSuccess {
+    return {
+        type: AuthTypes.SOCIAL_LOGIN_REQUEST_SUCCESS,
+        pending: false,
+        error: {},
+    }
+}
+
+export function socialLoginRequestFailure(error: Object) : AuthTypes.ISocialLoginRequestFailure {
+    return {
+        type: AuthTypes.SOCIAL_LOGIN_REQUEST_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+interface ISocialLoginRequest {
+    social: string,
+}
+
+export const socialLoginRequest = (payload: ISocialLoginRequest) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(socialLoginRequestPending());
+            const {data} = await apiAxios.post('api/login/social', payload);
+            window.open(data.targetUrl);
+            dispatch(socialLoginRequestSuccess());
+        }
+        catch (error)
+        {
+            dispatch(socialLoginRequestFailure(error));
+        }
+    }
+}
+
+/**
+ * Social Login Callback
+ */
+
+export function socialLoginCallbackPending() : AuthTypes.ISocialLoginCallbackPending {
+    return {
+        type: AuthTypes.SOCIAL_LOGIN_CALLBACK_PENDING,
+        pending: true,
+        error: {},
+    }
+}
+
+export function socialLoginCallbackSuccess(user: User) : AuthTypes.ISocialLoginCallbackSuccess {
+    return {
+        type: AuthTypes.SOCIAL_LOGIN_CALLBACK_SUCCESS,
+        user,
+        loggedIn: true,
+        pending: false,
+        error: {},
+    }
+}
+
+export function socialLoginCallbackFailure(error: Object) : AuthTypes.ISocialLoginCallbackFailure {
+    return {
+        type: AuthTypes.SOCIAL_LOGIN_CALLBACK_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+interface ISocialLoginCallbackProps {
+    code: string,
+    social: string,
+}
+
+export const socialLoginCallback = (payload: ISocialLoginCallbackProps) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(socialLoginCallbackPending());
+            const {data} = await apiAxios.get('api/login/social/callback', {
+                params: {
+                    ...payload,
+                }
+            });
+            console.log(data);
+            dispatch(socialLoginCallbackSuccess(data));
+        }
+        catch (error)
+        {
+            dispatch(socialLoginCallbackFailure(error));
         }
     }
 }

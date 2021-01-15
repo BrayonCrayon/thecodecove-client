@@ -1,64 +1,32 @@
 import {AppThunkType} from "../store/StoreState";
 import {apiAxios} from "../store/Store";
-import {
-    CREATE_POST_FAILURE,
-    CREATE_POST_PENDING,
-    CREATE_POST_SUCCESS,
-    FETCH_POST_FAILURE,
-    FETCH_POST_PENDING,
-    FETCH_POST_SUCCESS,
-    FETCH_POSTS_FAILURE,
-    FETCH_POSTS_PENDING,
-    FETCH_POSTS_SUCCESS,
-    ICreatePostFailure,
-    ICreatePostPending,
-    ICreatePostSuccess,
-    IFetchPostFailure,
-    IFetchPostPending,
-    IFetchPostsFailure,
-    IFetchPostsPending,
-    IFetchPostsSuccess,
-    IFetchPostSuccess,
-    ISetPost,
-    ISetPostById,
-    ISetPostsSearchTermFailure,
-    ISetPostsSearchTermPending,
-    ISetPostsSearchTermSuccess,
-    IUpdatePostFailure,
-    IUpdatePostPending,
-    IUpdatePostSuccess,
-    SET_POST,
-    SET_POST_BY_ID,
-    SET_POSTS_SEARCH_TERM_FAILURE,
-    SET_POSTS_SEARCH_TERM_PENDING,
-    SET_POSTS_SEARCH_TERM_SUCCESS,
-    UPDATE_POST_FAILURE,
-    UPDATE_POST_PENDING,
-    UPDATE_POST_SUCCESS
-} from "../action_types/BlogTypes";
+import * as BlogActionTypes from "../action_types/BlogTypes";
 import {Post} from "../dtos/Post";
+import {IStatus} from "../dtos/IStatus";
+import {IComment} from "../dtos/IComment";
+import {showToast} from "../Utility/Utility";
 
 
-export function FetchPostsPending(): IFetchPostsPending {
+export function FetchPostsPending(): BlogActionTypes.IFetchPostsPending {
     return {
-        type: FETCH_POSTS_PENDING,
+        type: BlogActionTypes.FETCH_POSTS_PENDING,
         pending: true,
         error: {},
     }
 }
 
-export function FetchPostsSuccess(posts: Array<Post>): IFetchPostsSuccess {
+export function FetchPostsSuccess(posts: Array<Post>): BlogActionTypes.IFetchPostsSuccess {
     return {
-        type: FETCH_POSTS_SUCCESS,
+        type: BlogActionTypes.FETCH_POSTS_SUCCESS,
         pending: false,
         posts,
         error: {},
     }
 }
 
-export function FetchPostsFailure(error: Object): IFetchPostsFailure {
+export function FetchPostsFailure(error: Object): BlogActionTypes.IFetchPostsFailure {
     return {
-        type: FETCH_POSTS_FAILURE,
+        type: BlogActionTypes.FETCH_POSTS_FAILURE,
         pending: false,
         error,
     }
@@ -79,26 +47,26 @@ export const fetchPosts = (): AppThunkType => {
 /**
  * Set Posts Search Term Action
  */
-export function setPostsSearchTermPending(): ISetPostsSearchTermPending {
+export function setPostsSearchTermPending(): BlogActionTypes.ISetPostsSearchTermPending {
     return {
-        type: SET_POSTS_SEARCH_TERM_PENDING,
+        type: BlogActionTypes.SET_POSTS_SEARCH_TERM_PENDING,
         pending: true,
         error: {}
     }
 }
 
-export function setPostsSearchTermSuccess(searchTerm: string): ISetPostsSearchTermSuccess {
+export function setPostsSearchTermSuccess(searchTerm: string): BlogActionTypes.ISetPostsSearchTermSuccess {
     return {
-        type: SET_POSTS_SEARCH_TERM_SUCCESS,
+        type: BlogActionTypes.SET_POSTS_SEARCH_TERM_SUCCESS,
         pending: true,
         error: {},
         searchTerm,
     }
 }
 
-export function setPostsSearchTermFailure(error: Object): ISetPostsSearchTermFailure {
+export function setPostsSearchTermFailure(error: Object): BlogActionTypes.ISetPostsSearchTermFailure {
     return {
-        type: SET_POSTS_SEARCH_TERM_FAILURE,
+        type: BlogActionTypes.SET_POSTS_SEARCH_TERM_FAILURE,
         pending: false,
         error,
     }
@@ -118,9 +86,9 @@ export const setPostsSearchTerm = (searchTerm: string): AppThunkType => {
 /**
  * Set Post
  */
-export function setPostAction(post: Post): ISetPost {
+export function setPostAction(post: Post): BlogActionTypes.ISetPost {
     return {
-        type: SET_POST,
+        type: BlogActionTypes.SET_POST,
         post,
         error: {},
         pending: false,
@@ -136,9 +104,9 @@ export const setPost = (post: Post): AppThunkType => {
 /**
  * Set Post By ID
  */
-export function setPostByIdAction(postId: number): ISetPostById {
+export function setPostByIdAction(postId: number): BlogActionTypes.ISetPostById {
     return {
-        type: SET_POST_BY_ID,
+        type: BlogActionTypes.SET_POST_BY_ID,
         postId,
         error: {},
         pending: false,
@@ -154,26 +122,26 @@ export const setPostById = (postId: number): AppThunkType => {
 /**
  * Fetch Post
  */
-export function fetchPostPending(): IFetchPostPending {
+export function fetchPostPending(): BlogActionTypes.IFetchPostPending {
     return {
-        type: FETCH_POST_PENDING,
+        type: BlogActionTypes.FETCH_POST_PENDING,
         pending: true,
         error: {},
     }
 }
 
-export function fetchPostSuccess(post: Post): IFetchPostSuccess {
+export function fetchPostSuccess(post: Post): BlogActionTypes.IFetchPostSuccess {
     return {
-        type: FETCH_POST_SUCCESS,
+        type: BlogActionTypes.FETCH_POST_SUCCESS,
         post,
         pending: false,
         error: {},
     }
 }
 
-export function fetchPostFailure(error: Object): IFetchPostFailure {
+export function fetchPostFailure(error: Object): BlogActionTypes.IFetchPostFailure {
     return {
-        type: FETCH_POST_FAILURE,
+        type: BlogActionTypes.FETCH_POST_FAILURE,
         error,
         pending: false,
     }
@@ -194,26 +162,26 @@ export const fetchPost = (id: number): AppThunkType => {
 /**
  * Create Post
  */
-export function createPostPending(): ICreatePostPending {
+export function createPostPending(): BlogActionTypes.ICreatePostPending {
     return {
-        type: CREATE_POST_PENDING,
+        type: BlogActionTypes.CREATE_POST_PENDING,
         pending: true,
         error: {},
     }
 }
 
-export function createPostSuccess(post: Post): ICreatePostSuccess {
+export function createPostSuccess(post: Post): BlogActionTypes.ICreatePostSuccess {
     return {
-        type: CREATE_POST_SUCCESS,
+        type: BlogActionTypes.CREATE_POST_SUCCESS,
         post,
         pending: false,
         error: {},
     }
 }
 
-export function createPostFailure(error: Object): ICreatePostFailure {
+export function createPostFailure(error: Object): BlogActionTypes.ICreatePostFailure {
     return {
-        type: CREATE_POST_FAILURE,
+        type: BlogActionTypes.CREATE_POST_FAILURE,
         pending: false,
         error,
     }
@@ -242,25 +210,25 @@ export const createPost = (payload: ICreatePostPayload): AppThunkType => {
 /**
  * Update Post
  */
-export function updatePostPending() : IUpdatePostPending {
+export function updatePostPending() : BlogActionTypes.IUpdatePostPending {
     return {
-        type: UPDATE_POST_PENDING,
+        type: BlogActionTypes.UPDATE_POST_PENDING,
         pending: true,
         error: {},
     }
 }
 
-export function updatePostSuccess() : IUpdatePostSuccess {
+export function updatePostSuccess() : BlogActionTypes.IUpdatePostSuccess {
     return {
-        type: UPDATE_POST_SUCCESS,
+        type: BlogActionTypes.UPDATE_POST_SUCCESS,
         pending: false,
         error: {},
     }
 }
 
-export function updatePostFailure(error: Object) : IUpdatePostFailure {
+export function updatePostFailure(error: Object) : BlogActionTypes.IUpdatePostFailure {
     return {
-        type: UPDATE_POST_FAILURE,
+        type: BlogActionTypes.UPDATE_POST_FAILURE,
         pending: false,
         error
     }
@@ -277,11 +245,477 @@ export const updatePost = (payload: UpdatePostPayload) : AppThunkType => {
             await apiAxios.put(`api/posts/update/${payload.post.id}`, {
                 content: payload.post.content,
                 name: payload.post.name,
+                status_id: payload.post.status_id,
             });
             dispatch(updatePostSuccess());
         }
         catch(error) {
             dispatch(updatePostFailure(error));
+        }
+    }
+}
+
+
+/**
+ * Fetch Statuses
+ */
+
+export function fetchStatusesPending() : BlogActionTypes.IFetchStatusesPending {
+    return {
+        type: BlogActionTypes.FETCH_STATUSES_PENDING,
+        pending: true,
+        error: {},
+    }
+}
+
+export function fetchStatusesSuccess(statuses: Array<IStatus>) : BlogActionTypes.IFetchStatusesSuccess {
+    return {
+        type: BlogActionTypes.FETCH_STATUSES_SUCCESS,
+        statuses,
+        pending: false,
+        error: {}
+    }
+}
+
+export function fetchStatusesFailure(error: Object) : BlogActionTypes.IFetchStatusesFailure {
+    return {
+        type: BlogActionTypes.FETCH_STATUSES_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+export const fetchStatuses = () : AppThunkType => {
+    return async dispatch => {
+        try {
+            dispatch(fetchStatusesPending());
+            const {data} = await apiAxios.get('api/statuses');
+            dispatch(fetchStatusesSuccess(data));
+        }
+        catch(error) {
+            dispatch(fetchStatusesFailure(error));
+        }
+    }
+}
+
+/**
+ *  Update Selected Post Values
+ */
+
+export function setPostName(name: string) : BlogActionTypes.ISetPostName {
+    return {
+        type: BlogActionTypes.SET_POST_NAME,
+        name,
+        pending: false,
+        error: {},
+    }
+}
+
+export const updatePostName = (name: string) : AppThunkType => {
+    return async dispatch => {
+        dispatch(setPostName(name));
+    }
+}
+
+export function setPostContent(content: string) : BlogActionTypes.ISetPostContent {
+    return {
+        type: BlogActionTypes.SET_POST_CONTENT,
+        content,
+        pending: false,
+        error: {},
+    }
+}
+
+export const updatePostContent = (content: string) : AppThunkType => {
+    return async dispatch => {
+        dispatch(setPostContent(content));
+    }
+}
+
+export function setPostStatus(status: IStatus) : BlogActionTypes.ISetPostStatus {
+    return {
+        type: BlogActionTypes.SET_POST_STATUS,
+        status,
+        pending: false,
+        error: {},
+    }
+}
+
+export const updatePostStatus = (status: IStatus) : AppThunkType => {
+    return async dispatch => {
+        dispatch(setPostStatus(status));
+    }
+}
+
+/**
+ * Fetch Drafted Posts
+ */
+
+export function fetchDraftedPostsPending() : BlogActionTypes.IFetchDraftedPostsPending {
+    return {
+        type: BlogActionTypes.FETCH_DRAFTED_POSTS_PENDING,
+        pending: true,
+        error: {},
+    }
+}
+
+export function fetchDraftedPostsSuccess(draftedPosts: Array<Post>) : BlogActionTypes.IFetchDraftedPostsSuccess {
+    return {
+        type: BlogActionTypes.FETCH_DRAFTED_POSTS_SUCCESS,
+        draftedPosts,
+        pending: false,
+        error: {},
+    }
+}
+
+export function fetchDraftedPostsFailure(error: Object) : BlogActionTypes.IFetchDraftedPostsFailure {
+    return {
+        type: BlogActionTypes.FETCH_DRAFTED_POSTS_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+export const fetchDraftedPosts = () : AppThunkType => {
+    return async dispatch => {
+        try {
+            dispatch(fetchDraftedPostsPending());
+            const {data} = await apiAxios.get('api/posts-drafted');
+            dispatch(fetchDraftedPostsSuccess(data));
+        }
+        catch(error)
+        {
+            dispatch(fetchDraftedPostsFailure(error));
+        }
+    }
+}
+
+/**
+ * Delete Post
+ */
+export function deletePostPending() : BlogActionTypes.IDeletePostPending {
+    return {
+        type: BlogActionTypes.DELETE_POST_PENDING,
+        pending: true,
+        error: {},
+    }
+}
+
+export function deletePostSuccess() : BlogActionTypes.IDeletePostSuccess {
+    return {
+        type: BlogActionTypes.DELETE_POST_SUCCESS,
+        pending: false,
+        error: {}
+    }
+}
+
+export function deletePostFailure(error: Object) : BlogActionTypes.IDeletePostFailure {
+    return {
+        type: BlogActionTypes.DELETE_POST_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+export const deletePost = (post: Post) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(deletePostPending());
+            await apiAxios.delete(`api/posts/${post.id}`);
+            dispatch(deletePostSuccess());
+            showToast(`Post "${post.name}" Deleted!`);
+            dispatch(removePost(post));
+        }
+        catch (error)
+        {
+            dispatch(deletePostFailure(error));
+        }
+    }
+}
+
+/**
+ *  Remove Published Post
+ */
+export function removePublishedPost(post: Post) : BlogActionTypes.IRemovePublishedPost {
+    return {
+        type: BlogActionTypes.REMOVE_PUBLISHED_POST,
+        post,
+        pending: false,
+        error: {}
+    }
+}
+
+/**
+ * Remove Drafted Post
+ */
+export function removeDraftedPost(post: Post) : BlogActionTypes.IRemoveDraftedPost {
+    return {
+        type: BlogActionTypes.REMOVE_DRAFTED_POST,
+        post,
+        pending: false,
+        error: {}
+    }
+}
+
+/**
+ * Remove Post
+ */
+export const removePost = (post: Post) : AppThunkType => {
+    return async dispatch => {
+        post.published_at ? dispatch(removePublishedPost(post)) : dispatch(removeDraftedPost(post));
+    }
+}
+
+/**
+ * Fetch Comments
+ */
+export function fetchCommentsPending() : BlogActionTypes.IFetchCommentsPending {
+    return {
+        type: BlogActionTypes.FETCH_COMMENTS_PENDING,
+        error: {},
+        pending: true,
+    }
+}
+
+export function fetchCommentsSuccess(comments: Array<IComment>) : BlogActionTypes.IFetchCommentsSuccess {
+    return {
+        type: BlogActionTypes.FETCH_COMMENTS_SUCCESS,
+        error: {},
+        pending: false,
+        comments,
+    }
+}
+
+export function fetchCommentsFailure(error: Object) : BlogActionTypes.IFetchCommentsFailure {
+    return {
+        type: BlogActionTypes.FETCH_COMMENTS_FAILURE,
+        error,
+        pending: false,
+    }
+}
+
+interface IFetchCommentsPayload {
+    postId: number,
+}
+
+export const fetchComments = (payload: IFetchCommentsPayload) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(fetchCommentsPending());
+            const {data} = await apiAxios.get(`api/comments/root/${payload.postId}`);
+            dispatch(fetchCommentsSuccess(data));
+        }
+        catch(error)
+        {
+            dispatch(fetchCommentsFailure(error));
+        }
+    }
+}
+
+/**
+ * Fetch Nested Comments
+ */
+
+export function fetchNestedCommentsPending() : BlogActionTypes.IFetchNestedCommentsPending {
+    return {
+        type: BlogActionTypes.FETCH_NESTED_COMMENTS_PENDING,
+        error: {},
+        pending: true,
+    }
+}
+
+export function fetchNestedCommentsSuccess() : BlogActionTypes.IFetchNestedCommentsSuccess {
+    return {
+        type: BlogActionTypes.FETCH_NESTED_COMMENTS_SUCCESS,
+        error: {},
+        pending: false,
+    }
+}
+
+export function fetchNestedCommentsFailure(error: Object) : BlogActionTypes.IFetchNestedCommentsFailure {
+    return {
+        type: BlogActionTypes.FETCH_NESTED_COMMENTS_FAILURE,
+        error,
+        pending: false,
+    }
+}
+
+interface IFetchNestedCommentsPayload {
+    comment: IComment,
+}
+
+
+export const fetchNestedComments = (payload: IFetchNestedCommentsPayload) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(fetchNestedCommentsPending());
+            const {data} = await apiAxios.get(`api/comments/nested/${payload.comment.id}`);
+
+            if (!payload.comment.comments) {
+                payload.comment.comments = [];
+            }
+            payload.comment.comments = payload.comment.comments.concat(data);
+            dispatch(fetchNestedCommentsSuccess());
+        }
+        catch (error)
+        {
+            dispatch(fetchNestedCommentsFailure(error));
+        }
+    }
+}
+
+
+/**
+ * Add Comment
+ */
+export function addCommentPending() : BlogActionTypes.IAddCommentPending {
+    return {
+        type: BlogActionTypes.ADD_COMMENT_PENDING,
+        error: {},
+        pending: true,
+    }
+}
+
+export function addCommentSuccess(comment: IComment) : BlogActionTypes.IAddCommentSuccess {
+    return {
+        type: BlogActionTypes.ADD_COMMENT_SUCCESS,
+        comment,
+        pending: false,
+        error: {},
+    }
+}
+
+export function addCommentFailure(error: Object) : BlogActionTypes.IAddCommentFailure {
+    return {
+        type: BlogActionTypes.ADD_COMMENT_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+interface IAddCommentPayload {
+    post_id?: number,
+    text: string,
+    user_id: number,
+    parent_id?: number,
+}
+
+export const addComment = (payload: IAddCommentPayload) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(addCommentPending());
+            const {data} = await apiAxios.post('api/comments/store', {
+                ...payload,
+            });
+            showToast('Comment Added!');
+            console.log(data);
+            dispatch(addCommentSuccess(data));
+        }
+        catch (error)
+        {
+            dispatch(addCommentFailure(error));
+        }
+    }
+}
+
+/**
+ * Add Nested Comment
+ */
+export function addNestedCommentPending() : BlogActionTypes.IAddNestedCommentPending {
+    return {
+        type: BlogActionTypes.ADD_NESTED_COMMENT_PENDING,
+        error: {},
+        pending: true,
+    }
+}
+
+export function addNestedCommentSuccess() : BlogActionTypes.IAddNestedCommentSuccess {
+    return {
+        type: BlogActionTypes.ADD_NESTED_COMMENT_SUCCESS,
+        pending: false,
+        error: {},
+    }
+}
+
+export function addNestedCommentFailure(error: Object) : BlogActionTypes.IAddNestedCommentFailure {
+    return {
+        type: BlogActionTypes.ADD_NESTED_COMMENT_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+export const addNestedComment = (payload: IAddCommentPayload, parent: IComment) : AppThunkType => {
+    return async dispatch => {
+        try
+        {
+            dispatch(addNestedCommentPending());
+            const {data} = await apiAxios.post('api/comments/store', {
+                ...payload,
+            });
+
+            if (!parent.comments) {
+                parent.comments = [];
+            }
+            parent.comments = [data].concat(parent.comments);
+            showToast('Comment Added!');
+            dispatch(addNestedCommentSuccess());
+        }
+        catch (error)
+        {
+            dispatch(addNestedCommentFailure(error));
+        }
+    }
+}
+
+/**
+ *  Update Comment
+ */
+export function updateCommentPending() : BlogActionTypes.IUpdateCommentPending {
+    return {
+        type: BlogActionTypes.UPDATE_COMMENT_PENDING,
+        pending: true,
+        error: {}
+    }
+}
+
+export function updateCommentSuccess() : BlogActionTypes.IUpdateCommentSuccess {
+    return {
+        type: BlogActionTypes.UPDATE_COMMENT_SUCCESS,
+        pending: false,
+        error: {},
+    }
+}
+
+export function updateCommentFailure(error: Object) : BlogActionTypes.IUpdateCommentFailure {
+    return {
+        type: BlogActionTypes.UPDATE_COMMENT_FAILURE,
+        pending: false,
+        error,
+    }
+}
+
+interface IUpdateCommentActionProps {
+    commentId: number,
+    text: string,
+}
+
+export const updateComment = (payload: IUpdateCommentActionProps) : AppThunkType => {
+    return async dispatch => {
+        try {
+            dispatch(updateCommentPending());
+            await apiAxios.put(`api/comments/${payload.commentId}`, {
+                text: payload.text,
+            });
+            dispatch(updateCommentSuccess());
+            showToast('Comment Updated!');
+        }
+        catch (error) {
+            dispatch(updateCommentFailure(error));
         }
     }
 }

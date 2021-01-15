@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {IStoreState} from "../../../store/StoreState";
 import {connect, useDispatch} from "react-redux";
 import {Post} from "../../../dtos/Post";
 import moment from "moment";
 import {fetchPost} from "../../../actions/BlogActions";
 import parse from 'html-react-parser';
+import CommentSection from "../Comments/CommentSection";
 
 export interface ViewProps {
     post: Post,
@@ -12,13 +13,16 @@ export interface ViewProps {
 }
 
 const View = ({post, match}: ViewProps) => {
+    const [postLoaded, setPostLoaded] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (post.id < 0){
+        if (!postLoaded){
             dispatch(fetchPost(match.params.id));
+            setPostLoaded(true);
         }
-    }, [post, dispatch, match.params.id]);
+    }, [postLoaded, dispatch, match.params.id]);
+
 
     return (
         <div className="grid grid-cols-1 gap-4 p-4">
@@ -37,7 +41,8 @@ const View = ({post, match}: ViewProps) => {
                 </div>
             </div>
             <div className="text-4xl text-center text-black font-semibold">{post.name}</div>
-            <div className="text-lg text-center text-black">{parse(post.content)}</div>
+            <div className="text-lg text-center text-black mb-16">{parse(post.content)}</div>
+            <CommentSection />
         </div>
     )
 };

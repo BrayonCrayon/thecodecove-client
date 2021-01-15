@@ -4,6 +4,7 @@ import {ThunkAction} from "redux-thunk";
 import {RootState} from "../reducers/RootReducer";
 import {Action} from "redux";
 import {IProject} from "../dtos/IProject";
+import {IStatus} from "../dtos/IStatus";
 
 
 export interface IBaseState {
@@ -19,7 +20,9 @@ export interface IAuthState extends IBaseState {
 export interface IBlogState extends IBaseState {
     posts: Array<Post>,
     post: Post,
+    draftedPosts: Array<Post>,
     searchTerm: string,
+    statuses: Array<IStatus>
 }
 
 export interface IAboutMeState extends IBaseState {
@@ -45,10 +48,12 @@ export function getInitialPostObj() : Post
     return {
         content: '',
         created_at: new Date(),
+        status_id: 1,
         id: -1,
         name: '',
         updated_at: new Date(),
         user: undefined,
         user_id: -1,
+        comments: [],
     }
 }

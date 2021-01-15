@@ -13,9 +13,9 @@ npm install
 
 <br/>
 
-Development
+Run Application
 ````
-npm run dev
+npm run hot
 ````
 
 <br/>

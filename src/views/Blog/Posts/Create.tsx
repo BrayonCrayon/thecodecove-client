@@ -7,20 +7,20 @@ import 'suneditor/dist/css/suneditor.min.css';
 import {createPost} from "../../../actions/BlogActions";
 import {useHistory} from 'react-router-dom';
 import {showToast} from "../../../Utility/Utility";
+import EditableInput from "../../../components/fields/EditableInput";
+import {AxiosResponse} from "axios";
+import {ApiErrorData} from "../../../dtos/ApiError";
 
 interface ICreateProps {
     userId: number,
+    error: AxiosResponse<ApiErrorData>
 }
 
-const Create = ({userId} : ICreateProps) => {
+const Create = ({userId, error}: ICreateProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [name, setName] = useState("");
     const [content, setContent] = useState("");
-
-    const handleNameChange = useCallback((e) => {
-        setName(e.target.value);
-    }, [setName]);
 
     const handleContentChange = useCallback((value) => {
         setContent(value);
@@ -42,9 +42,8 @@ const Create = ({userId} : ICreateProps) => {
                 Create Post
             </div>
             <FormGroup className="form-control">
-                <Label for="POST_NAME" className="text-black">name</Label>
-                <Input type="text" required className="form-input" name="name" id="POST_NAME" placeholder="Title"
-                       value={name} onChange={handleNameChange}/>
+                <EditableInput placeholder="Title" name="name" error={error} value={name}
+                               onChange={value => setName(value)} id="POST_NAME" label="name" required type="text"/>
             </FormGroup>
             <FormGroup className="form-control">
                 <Label for="POST_CONTENT" className="text-black">Content</Label>
@@ -70,6 +69,7 @@ const Create = ({userId} : ICreateProps) => {
 export function mapStateToProps(state: IStoreState) {
     return {
         userId: state.authState.user ? state.authState.user.id : 0,
+        error: state.blogState.error.response as AxiosResponse<ApiErrorData>
     }
 }
 

@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import {IComment} from "../../../dtos/IComment";
+import {IComment} from "../../../dtos/Comment";
 import {connect, useDispatch} from "react-redux";
 import moment from "moment";
 import {IStoreState} from "../../../store/StoreState";
@@ -8,7 +8,7 @@ import {addNestedComment, fetchNestedComments} from "../../../actions/BlogAction
 import {User} from "../../../dtos/User";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCaretUp, faCaretDown} from "@fortawesome/free-solid-svg-icons";
-import LoadingSpinner from "../../components/LoadingSpinner";
+import LoadingSpinner from "../../../components/LoadingSpinner";
 import parse from 'html-react-parser';
 import EditComment from "./EditComment";
 
@@ -70,11 +70,11 @@ const Comment = ({comment, user, className = ''}: ICommentProps) => {
         <div className={className}>
             <div className="flex p-2">
                 <div className="mr-3 w-1/6 flex justify-center">
-                    <img src={comment.user.avatar} alt="Users avatar" className="h-16 rounded-full lg:h-24 xl:h-32"/>
+                    <img src={comment.user?.avatar} alt="Users avatar" className="h-16 rounded-full lg:h-24 xl:h-32"/>
                 </div>
                 <div className="w-5/6">
                     <div className="text-sm text-gray-600 flex font-semibold mb-1">
-                        {comment.user.name} &#9758; {moment(comment.created_at).fromNow()}
+                        {comment.user?.name} &#9758; {moment(comment.created_at).fromNow()}
                     </div>
                     <div className="text-left text-black w-full">
                         {parse(commentText)}
@@ -109,7 +109,7 @@ const Comment = ({comment, user, className = ''}: ICommentProps) => {
                     </div>
                 }
                 {
-                    user !== undefined && user.id === comment.user.id &&
+                    user !== undefined && user.id === comment.user?.id &&
                     <EditComment comment={comment} className="w-full flex flex-wrap" contentClassName="w-full"
                                  btnClassName="text-sm text-purple-600 hover:text-purple-900 cursor-pointer absolute top-0 right-0 mr-12"
                                  updateCommentText={updateCommentText}

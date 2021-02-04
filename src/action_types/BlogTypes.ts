@@ -1,7 +1,7 @@
 import {IBaseState} from "../store/StoreState";
 import {Post} from "../dtos/Post";
-import {IStatus} from "../dtos/IStatus";
-import {IComment} from "../dtos/IComment";
+import {IStatus} from "../dtos/Status";
+import {IComment} from "../dtos/Comment";
 
 /*
  * Blog Post Fetch
@@ -21,7 +21,6 @@ export interface IFetchPostsSuccess extends IBaseState {
 
 export interface IFetchPostsFailure extends IBaseState {
     type: typeof FETCH_POSTS_FAILURE,
-    error: Object,
 }
 
 /**
@@ -117,6 +116,7 @@ export interface IUpdatePostPending extends IBaseState {
 
 export interface IUpdatePostSuccess extends IBaseState {
     type: typeof UPDATE_POST_SUCCESS,
+    post: Post
 }
 
 export interface IUpdatePostFailure extends IBaseState {

@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {IStoreState} from "../../../store/StoreState";
 import {connect, useDispatch} from "react-redux";
-import {Post} from "../../../dtos/Post";
+import {IPost} from "../../../dtos/Post";
 import moment from "moment";
 import {fetchPost} from "../../../actions/BlogActions";
 import parse from 'html-react-parser';
 import CommentSection from "../Comments/CommentSection";
 
 export interface ViewProps {
-    post: Post,
+    post: IPost,
     match: any
 }
 

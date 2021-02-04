@@ -1,37 +1,42 @@
 import * as React from "react";
 import {FormGroup, Label, Input, Button} from 'reactstrap';
-import { useHistory } from "react-router-dom";
-import {useCallback, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+import {useCallback, useEffect, useState} from "react";
+import {connect, useDispatch} from "react-redux";
 import {loginAction, socialLoginRequest} from "../../actions/AuthActions";
+import {IStoreState} from "../../store/StoreState";
+import {AxiosResponse} from "axios";
+import {ApiErrorData} from "../../dtos/ApiError";
+import EditableInput from "../../components/fields/EditableInput";
 
-const Login = () => {
+interface ILoginProps {
+    error: AxiosResponse<ApiErrorData>,
+    loggedIn: Boolean,
+}
+
+const Login = ({error, loggedIn}: ILoginProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [email, setEmail] = useState('braydonalan@gmail.com');
     const [password, setPassword] = useState('password');
 
-    const handleEmailChange = useCallback((e) => {
-        setEmail(e.target.value);
-    }, [setEmail]);
+    useEffect(() => {
+        if (loggedIn) {
+            history.push("/dashBoard");
+        }
+    }, [loggedIn, history]);
 
-    const handlePasswordChange = useCallback((e) => {
-        setPassword(e.target.value);
-    }, [setPassword]);
-
-    const loginUser = useCallback(async () => {
-        await dispatch(loginAction({
+    const loginUser = useCallback(() => {
+        dispatch(loginAction({
             email,
             password,
         }));
-        history.push("/");
-    }, [history, email, password, dispatch]);
+    }, [email, password, dispatch]);
 
     const socialLogin = useCallback(() => {
         dispatch(socialLoginRequest({
             social: 'github'
         }));
-        // history.push("/");
     }, [dispatch]);
 
     return (
@@ -40,18 +45,13 @@ const Login = () => {
                 Login
             </div>
             <FormGroup className="form-control">
-                <Label for="LOGIN_EMAIL" className="text-black">Email</Label>
-                <Input type="email" required className="form-input" name="email" id="LOGIN_EMAIL" placeholder="Email"
-                       value={email}
-                       onChange={handleEmailChange}
-                />
+                <EditableInput label="Email" name="email" id="email" type="email" onChange={value => setEmail(value)}
+                               required value={email} error={error} placeholder="Email"/>
             </FormGroup>
             <FormGroup className="form-control">
-                <Label for="LOGIN_PASSWORD" className="text-black">Password</Label>
-                <Input type="password" required className="form-input" name="password" id="LOGIN_PASSWORD"
-                       placeholder="Password" value={password}
-                       onChange={handlePasswordChange}
-                />
+                <EditableInput label="Password" name="password" id="password" type="password"
+                               onChange={value => setPassword(value)} required value={password} error={error}
+                               placeholder="Password"/>
             </FormGroup>
             <Button className="btn-primary" onClick={loginUser}>Login</Button>
             <Button className="btn-primary" onClick={socialLogin}>Social Login</Button>
@@ -59,4 +59,12 @@ const Login = () => {
     );
 };
 
-export default Login;
+function mapStateToProps(state: IStoreState) {
+    return {
+        error: state.authState.error.response as AxiosResponse<ApiErrorData>,
+        loggedIn: state.authState.loggedIn,
+    }
+}
+
+export default connect(mapStateToProps)(Login);
+

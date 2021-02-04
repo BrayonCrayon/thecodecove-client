@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useCallback, useEffect, useMemo, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars} from "@fortawesome/free-solid-svg-icons";
-import SearchInput from "../components/SearchInput";
+import SearchInput from "../../components/SearchInput";
 import {connect, useDispatch} from "react-redux";
 import {logout, setLoggedIn} from "../../actions/AuthActions";
 import {IStoreState} from "../../store/StoreState";

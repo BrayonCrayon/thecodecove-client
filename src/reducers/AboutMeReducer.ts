@@ -1,9 +1,9 @@
 import {IAboutMeState} from "../store/StoreState";
 import {DocmosisImages, FctImages, CodeCoveCardImages, WinairImages} from "./Helper";
+import {ApiError} from "../dtos/ApiError";
 
 
 const initialState: IAboutMeState = {
-    pending: false,
     projects: [
         {
             name: 'Docmosis',
@@ -118,7 +118,9 @@ const initialState: IAboutMeState = {
             ]
         }
     ],
-    error: {},
+    error: new ApiError(),
+    type: "",
+    pending: false,
 };
 
 export function aboutMeReducer(state = initialState, action: any): IAboutMeState {

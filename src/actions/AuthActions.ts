@@ -3,6 +3,8 @@ import {User} from "../dtos/User";
 import {AppThunkType} from "../store/StoreState";
 import {apiAxios} from "../store/Store";
 import {fetchDraftedPosts} from "./BlogActions";
+import {ApiError} from "../dtos/ApiError";
+import {AxiosError} from "axios";
 
 /**
  * LOGIN ACTION
@@ -13,7 +15,7 @@ export function loginPending() : AuthTypes.ILoginPending {
         type: AuthTypes.LOGIN_PENDING,
         loggedIn: false,
         pending: true,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -22,12 +24,12 @@ export function loginSuccess(user: User) : AuthTypes.ILoginSuccess {
         type: AuthTypes.LOGIN_SUCCESS,
         loggedIn: true,
         pending: false,
-        error: {},
+        error: new ApiError(),
         user,
     }
 }
 
-export function loginFailure(error: Object): AuthTypes.ILoginFailure {
+export function loginFailure(error: ApiError): AuthTypes.ILoginFailure {
     return {
         type: AuthTypes.LOGIN_FAILURE,
         loggedIn: false,
@@ -66,7 +68,7 @@ export function logoutPending() : AuthTypes.ILogoutPending {
     return {
         type: AuthTypes.LOGOUT_PENDING,
         pending: true,
-        error: {}
+        error: new ApiError()
     }
 }
 
@@ -76,11 +78,11 @@ export function logoutSuccess() : AuthTypes.ILogoutSuccess {
         pending: false,
         user: undefined,
         loggedIn: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
-export function logoutFailure(error: Object) : AuthTypes.ILogoutFailure {
+export function logoutFailure(error: ApiError) : AuthTypes.ILogoutFailure {
     return {
         type: AuthTypes.LOGOUT_FAILURE,
         pending: false,
@@ -111,7 +113,7 @@ export function registerPending() : AuthTypes.IRegisterPending {
         type: AuthTypes.REGISTER_PENDING,
         pending: true,
         loggedIn: false,
-        error: {}
+        error: new ApiError()
     }
 }
 
@@ -121,11 +123,11 @@ export function registerSuccess(user: User) : AuthTypes.IRegisterSuccess {
         pending: false,
         user,
         loggedIn: true,
-        error: {}
+        error: new ApiError()
     }
 }
 
-export function registerFailure(error: Object) : AuthTypes.IRegisterFailure {
+export function registerFailure(error: ApiError) : AuthTypes.IRegisterFailure {
     return {
         type: AuthTypes.REGISTER_FAILURE,
         pending: false,
@@ -146,7 +148,7 @@ export const register = (payload: AuthTypes.IRegisterForm) : AppThunkType => {
         }
         catch (error)
         {
-            dispatch(registerFailure(error));
+            dispatch(registerFailure(error.response));
         }
     }
 };
@@ -159,7 +161,7 @@ export function setLoggedInPending() : AuthTypes.ISetLoggedInPending {
     return {
         type: AuthTypes.SET_LOGGED_IN_PENDING,
         pending: true,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -169,11 +171,11 @@ export function setLoggedInSuccess(user: User) : AuthTypes.ISetLoggedInSuccess {
         user,
         loggedIn: true,
         pending: false,
-        error: {}
+        error: new ApiError()
     }
 }
 
-export function setLoggedInFailure(error: Object) : AuthTypes.ISetLoggedInFailure {
+export function setLoggedInFailure(error: ApiError) : AuthTypes.ISetLoggedInFailure {
     return {
         type: AuthTypes.SET_LOGGED_IN_FAILURE,
         pending: false,
@@ -201,7 +203,7 @@ export function socialLoginRequestPending() : AuthTypes.ISocialLoginRequestPendi
     return {
         type: AuthTypes.SOCIAL_LOGIN_REQUEST_PENDING,
         pending: true,
-        error: {}
+        error: new ApiError()
     }
 }
 
@@ -209,11 +211,11 @@ export function socialLoginRequestSuccess() : AuthTypes.ISocialLoginRequestSucce
     return {
         type: AuthTypes.SOCIAL_LOGIN_REQUEST_SUCCESS,
         pending: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
-export function socialLoginRequestFailure(error: Object) : AuthTypes.ISocialLoginRequestFailure {
+export function socialLoginRequestFailure(error: ApiError) : AuthTypes.ISocialLoginRequestFailure {
     return {
         type: AuthTypes.SOCIAL_LOGIN_REQUEST_FAILURE,
         pending: false,
@@ -249,7 +251,7 @@ export function socialLoginCallbackPending() : AuthTypes.ISocialLoginCallbackPen
     return {
         type: AuthTypes.SOCIAL_LOGIN_CALLBACK_PENDING,
         pending: true,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -259,11 +261,11 @@ export function socialLoginCallbackSuccess(user: User) : AuthTypes.ISocialLoginC
         user,
         loggedIn: true,
         pending: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
-export function socialLoginCallbackFailure(error: Object) : AuthTypes.ISocialLoginCallbackFailure {
+export function socialLoginCallbackFailure(error: ApiError) : AuthTypes.ISocialLoginCallbackFailure {
     return {
         type: AuthTypes.SOCIAL_LOGIN_CALLBACK_FAILURE,
         pending: false,

@@ -2,16 +2,18 @@ import {AppThunkType} from "../store/StoreState";
 import {apiAxios} from "../store/Store";
 import * as BlogActionTypes from "../action_types/BlogTypes";
 import {Post} from "../dtos/Post";
-import {IStatus} from "../dtos/IStatus";
-import {IComment} from "../dtos/IComment";
+import {IStatus} from "../dtos/Status";
+import {IComment} from "../dtos/Comment";
 import {showToast} from "../Utility/Utility";
+import {ApiError} from "../dtos/ApiError";
+import {AxiosError} from "axios";
 
 
 export function FetchPostsPending(): BlogActionTypes.IFetchPostsPending {
     return {
         type: BlogActionTypes.FETCH_POSTS_PENDING,
         pending: true,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -20,11 +22,11 @@ export function FetchPostsSuccess(posts: Array<Post>): BlogActionTypes.IFetchPos
         type: BlogActionTypes.FETCH_POSTS_SUCCESS,
         pending: false,
         posts,
-        error: {},
+        error: new ApiError(),
     }
 }
 
-export function FetchPostsFailure(error: Object): BlogActionTypes.IFetchPostsFailure {
+export function FetchPostsFailure(error: AxiosError): BlogActionTypes.IFetchPostsFailure {
     return {
         type: BlogActionTypes.FETCH_POSTS_FAILURE,
         pending: false,
@@ -51,7 +53,7 @@ export function setPostsSearchTermPending(): BlogActionTypes.ISetPostsSearchTerm
     return {
         type: BlogActionTypes.SET_POSTS_SEARCH_TERM_PENDING,
         pending: true,
-        error: {}
+        error: new ApiError()
     }
 }
 
@@ -59,12 +61,12 @@ export function setPostsSearchTermSuccess(searchTerm: string): BlogActionTypes.I
     return {
         type: BlogActionTypes.SET_POSTS_SEARCH_TERM_SUCCESS,
         pending: true,
-        error: {},
+        error: new ApiError(),
         searchTerm,
     }
 }
 
-export function setPostsSearchTermFailure(error: Object): BlogActionTypes.ISetPostsSearchTermFailure {
+export function setPostsSearchTermFailure(error: AxiosError): BlogActionTypes.ISetPostsSearchTermFailure {
     return {
         type: BlogActionTypes.SET_POSTS_SEARCH_TERM_FAILURE,
         pending: false,
@@ -90,7 +92,7 @@ export function setPostAction(post: Post): BlogActionTypes.ISetPost {
     return {
         type: BlogActionTypes.SET_POST,
         post,
-        error: {},
+        error: new ApiError(),
         pending: false,
     }
 }
@@ -108,7 +110,7 @@ export function setPostByIdAction(postId: number): BlogActionTypes.ISetPostById 
     return {
         type: BlogActionTypes.SET_POST_BY_ID,
         postId,
-        error: {},
+        error: new ApiError(),
         pending: false,
     }
 }
@@ -126,7 +128,7 @@ export function fetchPostPending(): BlogActionTypes.IFetchPostPending {
     return {
         type: BlogActionTypes.FETCH_POST_PENDING,
         pending: true,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -135,11 +137,11 @@ export function fetchPostSuccess(post: Post): BlogActionTypes.IFetchPostSuccess 
         type: BlogActionTypes.FETCH_POST_SUCCESS,
         post,
         pending: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
-export function fetchPostFailure(error: Object): BlogActionTypes.IFetchPostFailure {
+export function fetchPostFailure(error: AxiosError): BlogActionTypes.IFetchPostFailure {
     return {
         type: BlogActionTypes.FETCH_POST_FAILURE,
         error,
@@ -166,7 +168,7 @@ export function createPostPending(): BlogActionTypes.ICreatePostPending {
     return {
         type: BlogActionTypes.CREATE_POST_PENDING,
         pending: true,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -175,11 +177,11 @@ export function createPostSuccess(post: Post): BlogActionTypes.ICreatePostSucces
         type: BlogActionTypes.CREATE_POST_SUCCESS,
         post,
         pending: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
-export function createPostFailure(error: Object): BlogActionTypes.ICreatePostFailure {
+export function createPostFailure(error: AxiosError): BlogActionTypes.ICreatePostFailure {
     return {
         type: BlogActionTypes.CREATE_POST_FAILURE,
         pending: false,
@@ -214,7 +216,7 @@ export function updatePostPending() : BlogActionTypes.IUpdatePostPending {
     return {
         type: BlogActionTypes.UPDATE_POST_PENDING,
         pending: true,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -222,11 +224,12 @@ export function updatePostSuccess() : BlogActionTypes.IUpdatePostSuccess {
     return {
         type: BlogActionTypes.UPDATE_POST_SUCCESS,
         pending: false,
-        error: {},
+        post: new Post(),
+        error: new ApiError(),
     }
 }
 
-export function updatePostFailure(error: Object) : BlogActionTypes.IUpdatePostFailure {
+export function updatePostFailure(error: AxiosError) : BlogActionTypes.IUpdatePostFailure {
     return {
         type: BlogActionTypes.UPDATE_POST_FAILURE,
         pending: false,
@@ -264,7 +267,7 @@ export function fetchStatusesPending() : BlogActionTypes.IFetchStatusesPending {
     return {
         type: BlogActionTypes.FETCH_STATUSES_PENDING,
         pending: true,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -273,11 +276,11 @@ export function fetchStatusesSuccess(statuses: Array<IStatus>) : BlogActionTypes
         type: BlogActionTypes.FETCH_STATUSES_SUCCESS,
         statuses,
         pending: false,
-        error: {}
+        error: new ApiError()
     }
 }
 
-export function fetchStatusesFailure(error: Object) : BlogActionTypes.IFetchStatusesFailure {
+export function fetchStatusesFailure(error: AxiosError) : BlogActionTypes.IFetchStatusesFailure {
     return {
         type: BlogActionTypes.FETCH_STATUSES_FAILURE,
         pending: false,
@@ -307,7 +310,7 @@ export function setPostName(name: string) : BlogActionTypes.ISetPostName {
         type: BlogActionTypes.SET_POST_NAME,
         name,
         pending: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -322,7 +325,7 @@ export function setPostContent(content: string) : BlogActionTypes.ISetPostConten
         type: BlogActionTypes.SET_POST_CONTENT,
         content,
         pending: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -337,7 +340,7 @@ export function setPostStatus(status: IStatus) : BlogActionTypes.ISetPostStatus 
         type: BlogActionTypes.SET_POST_STATUS,
         status,
         pending: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -355,7 +358,7 @@ export function fetchDraftedPostsPending() : BlogActionTypes.IFetchDraftedPostsP
     return {
         type: BlogActionTypes.FETCH_DRAFTED_POSTS_PENDING,
         pending: true,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -364,11 +367,11 @@ export function fetchDraftedPostsSuccess(draftedPosts: Array<Post>) : BlogAction
         type: BlogActionTypes.FETCH_DRAFTED_POSTS_SUCCESS,
         draftedPosts,
         pending: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
-export function fetchDraftedPostsFailure(error: Object) : BlogActionTypes.IFetchDraftedPostsFailure {
+export function fetchDraftedPostsFailure(error: AxiosError) : BlogActionTypes.IFetchDraftedPostsFailure {
     return {
         type: BlogActionTypes.FETCH_DRAFTED_POSTS_FAILURE,
         pending: false,
@@ -397,7 +400,7 @@ export function deletePostPending() : BlogActionTypes.IDeletePostPending {
     return {
         type: BlogActionTypes.DELETE_POST_PENDING,
         pending: true,
-        error: {},
+        error: new ApiError(),
     }
 }
 
@@ -405,11 +408,11 @@ export function deletePostSuccess() : BlogActionTypes.IDeletePostSuccess {
     return {
         type: BlogActionTypes.DELETE_POST_SUCCESS,
         pending: false,
-        error: {}
+        error: new ApiError()
     }
 }
 
-export function deletePostFailure(error: Object) : BlogActionTypes.IDeletePostFailure {
+export function deletePostFailure(error: AxiosError) : BlogActionTypes.IDeletePostFailure {
     return {
         type: BlogActionTypes.DELETE_POST_FAILURE,
         pending: false,
@@ -442,7 +445,7 @@ export function removePublishedPost(post: Post) : BlogActionTypes.IRemovePublish
         type: BlogActionTypes.REMOVE_PUBLISHED_POST,
         post,
         pending: false,
-        error: {}
+        error: new ApiError()
     }
 }
 
@@ -454,7 +457,7 @@ export function removeDraftedPost(post: Post) : BlogActionTypes.IRemoveDraftedPo
         type: BlogActionTypes.REMOVE_DRAFTED_POST,
         post,
         pending: false,
-        error: {}
+        error: new ApiError()
     }
 }
 
@@ -473,7 +476,7 @@ export const removePost = (post: Post) : AppThunkType => {
 export function fetchCommentsPending() : BlogActionTypes.IFetchCommentsPending {
     return {
         type: BlogActionTypes.FETCH_COMMENTS_PENDING,
-        error: {},
+        error: new ApiError(),
         pending: true,
     }
 }
@@ -481,13 +484,13 @@ export function fetchCommentsPending() : BlogActionTypes.IFetchCommentsPending {
 export function fetchCommentsSuccess(comments: Array<IComment>) : BlogActionTypes.IFetchCommentsSuccess {
     return {
         type: BlogActionTypes.FETCH_COMMENTS_SUCCESS,
-        error: {},
+        error: new ApiError(),
         pending: false,
         comments,
     }
 }
 
-export function fetchCommentsFailure(error: Object) : BlogActionTypes.IFetchCommentsFailure {
+export function fetchCommentsFailure(error: AxiosError) : BlogActionTypes.IFetchCommentsFailure {
     return {
         type: BlogActionTypes.FETCH_COMMENTS_FAILURE,
         error,
@@ -521,7 +524,7 @@ export const fetchComments = (payload: IFetchCommentsPayload) : AppThunkType => 
 export function fetchNestedCommentsPending() : BlogActionTypes.IFetchNestedCommentsPending {
     return {
         type: BlogActionTypes.FETCH_NESTED_COMMENTS_PENDING,
-        error: {},
+        error: new ApiError(),
         pending: true,
     }
 }
@@ -529,12 +532,12 @@ export function fetchNestedCommentsPending() : BlogActionTypes.IFetchNestedComme
 export function fetchNestedCommentsSuccess() : BlogActionTypes.IFetchNestedCommentsSuccess {
     return {
         type: BlogActionTypes.FETCH_NESTED_COMMENTS_SUCCESS,
-        error: {},
+        error: new ApiError(),
         pending: false,
     }
 }
 
-export function fetchNestedCommentsFailure(error: Object) : BlogActionTypes.IFetchNestedCommentsFailure {
+export function fetchNestedCommentsFailure(error: AxiosError) : BlogActionTypes.IFetchNestedCommentsFailure {
     return {
         type: BlogActionTypes.FETCH_NESTED_COMMENTS_FAILURE,
         error,
@@ -574,7 +577,7 @@ export const fetchNestedComments = (payload: IFetchNestedCommentsPayload) : AppT
 export function addCommentPending() : BlogActionTypes.IAddCommentPending {
     return {
         type: BlogActionTypes.ADD_COMMENT_PENDING,
-        error: {},
+        error: new ApiError(),
         pending: true,
     }
 }
@@ -584,11 +587,11 @@ export function addCommentSuccess(comment: IComment) : BlogActionTypes.IAddComme
         type: BlogActionTypes.ADD_COMMENT_SUCCESS,
         comment,
         pending: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
-export function addCommentFailure(error: Object) : BlogActionTypes.IAddCommentFailure {
+export function addCommentFailure(error: AxiosError) : BlogActionTypes.IAddCommentFailure {
     return {
         type: BlogActionTypes.ADD_COMMENT_FAILURE,
         pending: false,
@@ -628,7 +631,7 @@ export const addComment = (payload: IAddCommentPayload) : AppThunkType => {
 export function addNestedCommentPending() : BlogActionTypes.IAddNestedCommentPending {
     return {
         type: BlogActionTypes.ADD_NESTED_COMMENT_PENDING,
-        error: {},
+        error: new ApiError(),
         pending: true,
     }
 }
@@ -637,11 +640,11 @@ export function addNestedCommentSuccess() : BlogActionTypes.IAddNestedCommentSuc
     return {
         type: BlogActionTypes.ADD_NESTED_COMMENT_SUCCESS,
         pending: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
-export function addNestedCommentFailure(error: Object) : BlogActionTypes.IAddNestedCommentFailure {
+export function addNestedCommentFailure(error: AxiosError) : BlogActionTypes.IAddNestedCommentFailure {
     return {
         type: BlogActionTypes.ADD_NESTED_COMMENT_FAILURE,
         pending: false,
@@ -679,7 +682,7 @@ export function updateCommentPending() : BlogActionTypes.IUpdateCommentPending {
     return {
         type: BlogActionTypes.UPDATE_COMMENT_PENDING,
         pending: true,
-        error: {}
+        error: new ApiError()
     }
 }
 
@@ -687,11 +690,11 @@ export function updateCommentSuccess() : BlogActionTypes.IUpdateCommentSuccess {
     return {
         type: BlogActionTypes.UPDATE_COMMENT_SUCCESS,
         pending: false,
-        error: {},
+        error: new ApiError(),
     }
 }
 
-export function updateCommentFailure(error: Object) : BlogActionTypes.IUpdateCommentFailure {
+export function updateCommentFailure(error: AxiosError) : BlogActionTypes.IUpdateCommentFailure {
     return {
         type: BlogActionTypes.UPDATE_COMMENT_FAILURE,
         pending: false,

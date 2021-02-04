@@ -5,6 +5,9 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {IStoreState} from "./StoreState";
 import axios from "axios";
 import {BaseUrl} from "../Constants";
+import {createBrowserHistory} from 'history';
+
+export const history = createBrowserHistory();
 
 export function configureStore() : Store<IStoreState> {
     const composeEnhancers = composeWithDevTools(applyMiddleware(thunk));

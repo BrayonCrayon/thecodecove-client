@@ -1,16 +1,19 @@
-import {getInitialPostObj, IBlogState} from "../store/StoreState";
+import {IBlogState} from "../store/StoreState";
 import * as BlogActionTypes from "../action_types/BlogTypes";
 import {findPostById} from "./Helper";
+import {Post} from "../dtos/Post";
+import {ApiError} from "../dtos/ApiError";
 
 
 const initialState: IBlogState = {
-    pending: false,
     posts: [],
-    post: getInitialPostObj(),
+    post: new Post(),
     draftedPosts: [],
-    error: {},
     searchTerm: '',
     statuses: [],
+    type: "",
+    pending: false,
+    error: new ApiError(),
 };
 
 export function blogReducer(state = initialState, action: BlogActionTypes.BlogTypes) : IBlogState {
@@ -22,7 +25,7 @@ export function blogReducer(state = initialState, action: BlogActionTypes.BlogTy
             return {
                 ...state,
                 ...action,
-            };
+            } as IBlogState;
         case BlogActionTypes.SET_POSTS_SEARCH_TERM_PENDING:
         case BlogActionTypes.SET_POSTS_SEARCH_TERM_SUCCESS:
         case BlogActionTypes.SET_POSTS_SEARCH_TERM_FAILURE:
@@ -149,12 +152,11 @@ export function blogReducer(state = initialState, action: BlogActionTypes.BlogTy
                 ...action,
             }
         case BlogActionTypes.ADD_COMMENT_SUCCESS:
+            state.post.comments.unshift(action.comment);
             return {
                 ...state,
-                post: {
-                    ...state.post,
-                    comments: [action.comment].concat(state.post.comments)
-                }
+                error: action.error,
+
             }
         case BlogActionTypes.ADD_NESTED_COMMENT_PENDING:
         case BlogActionTypes.ADD_NESTED_COMMENT_SUCCESS:

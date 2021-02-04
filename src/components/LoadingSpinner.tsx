@@ -1,5 +1,5 @@
 import React from 'react';
-import {IStoreState} from "../../store/StoreState";
+import {IStoreState} from "../store/StoreState";
 import {connect} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSpinner} from "@fortawesome/free-solid-svg-icons";

@@ -3,13 +3,15 @@ import {Post} from "../dtos/Post";
 import {ThunkAction} from "redux-thunk";
 import {RootState} from "../reducers/RootReducer";
 import {Action} from "redux";
-import {IProject} from "../dtos/IProject";
-import {IStatus} from "../dtos/IStatus";
+import {IProject} from "../dtos/Project";
+import {IStatus} from "../dtos/Status";
+import {AxiosError} from 'axios';
 
 
 export interface IBaseState {
     pending: Boolean,
-    error: Object,
+    error: AxiosError,
+    type: string,
 }
 
 export interface IAuthState extends IBaseState {
@@ -42,18 +44,3 @@ export type AppThunkType<ReturnType = void> = ThunkAction<
     unknown,
     Action<string>
     >;
-
-export function getInitialPostObj() : Post
-{
-    return {
-        content: '',
-        created_at: new Date(),
-        status_id: 1,
-        id: -1,
-        name: '',
-        updated_at: new Date(),
-        user: undefined,
-        user_id: -1,
-        comments: [],
-    }
-}

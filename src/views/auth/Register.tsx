@@ -1,12 +1,20 @@
 import * as React from 'react';
-import {Button, FormGroup, Input, Label} from "reactstrap";
-import {useCallback, useState} from "react";
-import {useDispatch} from "react-redux";
+import {Button, FormGroup} from "reactstrap";
+import {useCallback, useEffect, useState} from "react";
+import {connect, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {register} from "../../actions/AuthActions";
+import EditableInput from "../../components/fields/EditableInput";
+import {IStoreState} from "../../store/StoreState";
+import {AxiosResponse} from "axios";
+import {ApiErrorData} from "../../dtos/ApiError";
 
+interface IRegisterProps {
+    error: AxiosResponse<ApiErrorData>,
+    loggedIn: Boolean
+}
 
-const Register = () => {
+const Register = ({error, loggedIn}: IRegisterProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [email, setEmail] = useState('');
@@ -14,31 +22,20 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const registerUser = useCallback(async () => {
-        await dispatch(register({
+    useEffect(() => {
+        if (loggedIn) {
+            history.push("/dashboard");
+        }
+    }, [history, loggedIn]);
+
+    const registerUser = useCallback(() => {
+        dispatch(register({
             email,
             name,
             password,
             confirmPassword,
         }));
-        history.push("/");
-    }, [dispatch, email, name, password, confirmPassword, history]);
-
-    const handleEmailChange = useCallback((e) => {
-        setEmail(e.target.value);
-    }, [setEmail]);
-
-    const handleNameChange = useCallback((e) => {
-        setName(e.target.value);
-    }, [setName]);
-
-    const handlePasswordChange = useCallback((e) => {
-        setPassword(e.target.value);
-    }, [setPassword]);
-
-    const handleConfirmPasswordChange = useCallback((e) => {
-        setConfirmPassword(e.target.value);
-    }, [setConfirmPassword]);
+    }, [dispatch, email, name, password, confirmPassword]);
 
     return (
 
@@ -47,29 +44,33 @@ const Register = () => {
                 Register
             </div>
             <FormGroup className="form-control">
-                <Label for="LOGIN_EMAIL" className="text-black">Email</Label>
-                <Input type="email" required className="form-input" name="email" id="LOGIN_EMAIL" placeholder="Email"
-                       value={email} onChange={handleEmailChange}/>
+                <EditableInput label="Email" id="email" name="email" type="email" onChange={value => setEmail(value)}
+                               required value={email} error={error} placeholder="Email"/>
             </FormGroup>
             <FormGroup className="form-control">
-                <Label for="LOGIN_NAME" className="text-black">Name</Label>
-                <Input type="text" required className="form-input" name="name" id="LOGIN_NAME" placeholder="Name"
-                       value={name} onChange={handleNameChange}/>
+                <EditableInput label="Name" id="name" name="name" type="text" onChange={value => setName(value)} required
+                               value={name} error={error} placeholder="Name"/>
             </FormGroup>
             <FormGroup className="form-control">
-                <Label for="LOGIN_PASSWORD" className="text-black">Password</Label>
-                <Input type="password" required className="form-input" name="password" id="LOGIN_PASSWORD"
-                       placeholder="Password" value={password} onChange={handlePasswordChange}/>
+                <EditableInput label="Password" id="password" name="password" type="password"
+                               onChange={value => setPassword(value)} required value={password} error={error}
+                               placeholder="Password"/>
             </FormGroup>
             <FormGroup className="form-control">
-                <Label for="LOGIN_CONFIRM_PASSWORD" className="text-black">Confirm Password</Label>
-                <Input type="password" required className="form-input" name="confirm_password"
-                       id="LOGIN_CONFIRM_PASSWORD" placeholder="Confirm Password" value={confirmPassword}
-                       onChange={handleConfirmPasswordChange}/>
+                <EditableInput label="Confirm Password" id="confirmPassword" name="confirmPassword" type="password"
+                               onChange={value => setConfirmPassword(value)} required value={confirmPassword} error={error}
+                               placeholder="Confirm Password"/>
             </FormGroup>
             <Button className="btn-primary" onClick={registerUser}>Register</Button>
         </div>
     );
 };
 
-export default Register;
+const mapStateToProps = (state: IStoreState) => {
+    return {
+        error: state.authState.error.response as AxiosResponse<ApiErrorData>,
+        loggedIn: state.authState.loggedIn,
+    }
+}
+
+export default connect(mapStateToProps)(Register);

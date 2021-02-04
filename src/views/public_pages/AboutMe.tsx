@@ -2,7 +2,7 @@ import React from 'react';
 import {IAboutMeState, IStoreState} from "../../store/StoreState";
 import {connect} from "react-redux";
 import profilePhoto from "../../assets/images/profilePhoto.png";
-import Project from "../components/Project";
+import Project from "../../components/Project";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 

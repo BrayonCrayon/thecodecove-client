@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import {IStoreState} from "../../../store/StoreState";
 import {connect, useDispatch} from "react-redux";
 import SunEditor from "suneditor-react";
-import {IComment} from "../../../dtos/IComment";
+import {IComment} from "../../../dtos/Comment";
 import {updateComment} from "../../../actions/BlogActions";
 interface IEditCommentProps {
     className?: string,

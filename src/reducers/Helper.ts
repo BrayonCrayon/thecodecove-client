@@ -1,5 +1,4 @@
 import {Post} from "../dtos/Post";
-import {getInitialPostObj} from "../store/StoreState";
 import docmosisCurriculumEdit from '../assets/images/projects/docmosis/docmosis-curriculum-edit.png';
 import docmosisAdminMembers from '../assets/images/projects/docmosis/docmosis-admin-members.png';
 import docmosisCurriculumMembers from '../assets/images/projects/docmosis/docmosis-curriculum-members.png';
@@ -24,7 +23,7 @@ import winairHome from '../assets/images/projects/winair/winair.png';
 
 export function findPostById(id: number, posts: Array<Post>) {
     const post = posts.find(p => p.id === id);
-    return post ? post : getInitialPostObj();
+    return post ? post : new Post();
 }
 
 export function isEmpty(array: Array<Object>) : Boolean {

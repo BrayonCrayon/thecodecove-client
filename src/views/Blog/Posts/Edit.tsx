@@ -6,18 +6,22 @@ import {fetchPost, updatePost, updatePostContent, updatePostName, updatePostStat
 import {Button, FormGroup, Input, Label} from "reactstrap";
 import SunEditor from "suneditor-react";
 import {useHistory} from 'react-router-dom';
-import {IStatus} from "../../../dtos/IStatus";
+import {IStatus} from "../../../dtos/Status";
 import {showToast} from "../../../Utility/Utility";
+import EditableInput from "../../../components/fields/EditableInput";
+import {AxiosResponse} from "axios";
+import {ApiErrorData} from "../../../dtos/ApiError";
 
 const _ = require('lodash');
 
 interface EditProps {
     post: Post,
     match: any,
-    statuses: Array<IStatus>
+    statuses: Array<IStatus>,
+    error: AxiosResponse<ApiErrorData>
 }
 
-const Edit = ({post, match, statuses = []}: EditProps) => {
+const Edit = ({post, match, statuses = [], error}: EditProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -44,7 +48,7 @@ const Edit = ({post, match, statuses = []}: EditProps) => {
         await dispatch(updatePost({
             post
         }));
-        history.push('/');
+        history.push('/dashboard');
         showToast('Post Updated!');
     }, [dispatch, post, history]);
 
@@ -54,9 +58,8 @@ const Edit = ({post, match, statuses = []}: EditProps) => {
                 Edit Post
             </div>
             <FormGroup className="form-control">
-                <Label for="POST_NAME" className="form-label">Name</Label>
-                <Input type="text" required className="form-input" name="name" id="POST_NAME" placeholder="Email"
-                       value={post.name} onChange={handleNameChange}/>
+                <EditableInput id="POST_NAME" value={post.name} onChange={value => dispatch(updatePostName(value))}
+                               error={error} placeholder="Email" label="Name" name="name" required type="text"/>
             </FormGroup>
             <FormGroup className="form-control">
                 <Label for="POST_STATUS" className="form-label">Status</Label>
@@ -101,6 +104,7 @@ export function mapStateToProps(state: IStoreState) {
     return {
         post: state.blogState.post,
         statuses: state.blogState.statuses,
+        error: state.blogState.error.response as AxiosResponse<ApiErrorData>
     }
 }
 

@@ -27,7 +27,6 @@ export interface ILoginSuccess extends IBaseState {
 export interface ILoginFailure extends IBaseState {
     type: typeof LOGIN_FAILURE,
     loggedIn: Boolean,
-    error: Object,
 }
 
 /**
@@ -58,7 +57,6 @@ export interface IRegisterSuccess extends IBaseState {
 export interface IRegisterFailure extends IBaseState {
     type: typeof REGISTER_FAILURE,
     loggedIn: Boolean,
-    error: Object,
 }
 
 /**

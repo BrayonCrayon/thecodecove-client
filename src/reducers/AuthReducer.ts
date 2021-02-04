@@ -1,5 +1,6 @@
 import * as AuthActionTypes from '../action_types/AuthTypes';
 import {IAuthState} from "../store/StoreState";
+import {ApiError} from "../dtos/ApiError";
 
 const initialState: IAuthState = {
     pending: false,
@@ -10,7 +11,8 @@ const initialState: IAuthState = {
         name: '',
     },
     loggedIn: false,
-    error: {},
+    error: new ApiError(),
+    type: "",
 };
 
 export function authReducer(state = initialState, action: AuthActionTypes.AuthTypes): IAuthState {
@@ -21,7 +23,7 @@ export function authReducer(state = initialState, action: AuthActionTypes.AuthTy
             return {
                 ...state,
                 ...action,
-            };
+            } as IAuthState;
         case AuthActionTypes.LOGOUT_PENDING:
         case AuthActionTypes.LOGOUT_SUCCESS:
         case AuthActionTypes.LOGOUT_FAILURE:
@@ -35,7 +37,7 @@ export function authReducer(state = initialState, action: AuthActionTypes.AuthTy
             return {
                 ...state,
                 ...action,
-            };
+            } as IAuthState;
         case AuthActionTypes.SET_LOGGED_IN_PENDING:
         case AuthActionTypes.SET_LOGGED_IN_SUCCESS:
         case AuthActionTypes.SET_LOGGED_IN_FAILURE:
